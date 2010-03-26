@@ -68,6 +68,30 @@
   return result;
 }
 
+-(NSString *)toObjcNSColor {
+  NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+  
+  NSString *result = [NSString stringWithFormat: @"[NSColor colorWithCalibratedRed:%f green:%f blue:%f alpha:%f]",
+                       [color redComponent],
+                       [color greenComponent],
+                       [color blueComponent],
+                       [color alphaComponent]];
+  
+  return result;
+}
+
+-(NSString *)toMacRubyNSColor {
+  NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+  
+  NSString *result = [NSString stringWithFormat: @"NSColor.colorWithCalibratedRed(%g, green: %g, blue: %g, alpha: %g)",
+                       [color redComponent],
+                       [color greenComponent],
+                       [color blueComponent],
+                       [color alphaComponent]];
+  
+  return result;
+}
+
 // -(NSString *)toCSSString {
 //   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
 //   return ([color alphaComponent] == 1.0) ? [self toCSSRGBString] : [self toCSSRGBAString];

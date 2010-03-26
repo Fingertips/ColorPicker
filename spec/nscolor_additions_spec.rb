@@ -46,6 +46,16 @@ describe "NSColor additions, to string" do
     color.toHSLAString.should == "hsla(360, 100%, 100%, 0.52)"
   end
   
+  it "returns a Objective-C NSColor representation" do
+    color = NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 1)
+    color.toObjcNSColor.should == "[NSColor colorWithCalibratedRed:0.800000 green:0.700000 blue:0.600000 alpha:1.000000]"
+  end
+  
+  it "returns a MacRuby NSColor representation" do
+    color = NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 1)
+    color.toMacRubyNSColor.should == "NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 1)"
+  end
+  
   # it "returns a CSS representation, automagically converted to the appropriate format" do
   #   color = NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 1)
   #   color.toCSSString.should == "#cbb298"

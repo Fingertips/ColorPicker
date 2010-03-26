@@ -15,4 +15,7 @@
 
 -(NSString *)toHSLString;
 -(NSString *)toHSLAString;
+
+-(NSString *)toObjcNSColor;
+-(NSString *)toMacRubyNSColor;
 @end

@@ -12,9 +12,10 @@
   [panel setShowsAlpha: YES];
   [panel makeKeyAndOrderFront: self];
   
-  NSLog([[NSColor blackColor] toHexString]);
-  NSLog([[NSColor whiteColor] toHexString]);
-  NSLog([[NSColor redColor] toHexString]);
+  // NSLog([[NSColor blackColor] toHexString]);
+  // NSLog([[NSColor whiteColor] toHexString]);
+  // NSLog([[NSColor redColor] toHexString]);
+  NSLog([[NSColor colorWithCalibratedRed:0.8f green:0.7f blue:0.6f alpha:1.0f] toHexString]);
 }
 
 - (void)windowWillClose:(NSNotification *)aNotification
