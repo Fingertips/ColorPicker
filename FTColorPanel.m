@@ -3,6 +3,8 @@
 @implementation FTColorPanel
 -(FTColorPanel *)init {
   if ([super init]) {
+    _colorMode = MACRUBY_NSCOLOR_COLOR_MODE;
+    
     [self setStyleMask: NSTitledWindowMask|NSClosableWindowMask|NSMiniaturizableWindowMask|NSResizableWindowMask];
     [self setFloatingPanel: YES];
     [self setShowsAlpha: YES];
@@ -34,12 +36,35 @@
   return nil;
 }
 
+-(int)colorMode {
+  return _colorMode;
+}
+
+-(void)setColorMode:(int)colorMode {
+  _colorMode = colorMode;
+  [self updateStringRepresentationOfColor];
+}
+
 -(void)setColor:(NSColor *)color {
   [super setColor: color];
   [self updateStringRepresentationOfColor];
 }
 
+-(NSString *)representationStringOfColor {
+  NSColor *color = [self color];
+  
+  switch (_colorMode) {
+    case HEX_COLOR_MODE:             return [color toHexString];
+    case RGB_COLOR_MODE:             return [color toRGBString];
+    case RGBA_COLOR_MODE:            return [color toRGBAString];
+    case HSL_COLOR_MODE:             return [color toHSLString];
+    case HSLA_COLOR_MODE:            return [color toHSLAString];
+    case OBJC_NSCOLOR_COLOR_MODE:    return [color toObjcNSColor];
+    case MACRUBY_NSCOLOR_COLOR_MODE: return [color toMacRubyNSColor];
+  }
+}
+
 -(void)updateStringRepresentationOfColor {
-  [colorCodeField setStringValue: [[self color] toHexString]];
+  [colorCodeField setStringValue: [self representationStringOfColor]];
 }
 @end

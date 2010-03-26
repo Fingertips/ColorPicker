@@ -8,11 +8,16 @@
 }
 
 -(IBAction)copy:(id)sender {
-  NSArray *contents = [NSArray arrayWithObject: [[panel color] toHexString]];
+  NSArray *contents = [NSArray arrayWithObject: [panel representationStringOfColor]];
   
   NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
   [pasteboard clearContents];
   [pasteboard writeObjects: contents];
+}
+
+-(IBAction)copyAs:(id)sender {
+  [panel setColorMode: (int)[sender tag]];
+  [self copy: nil];
 }
 
 -(IBAction)paste:(id)sender {

@@ -6,6 +6,7 @@
 }
 
 -(IBAction)copy:(id)sender;
+-(IBAction)copyAs:(id)sender;
 -(IBAction)paste:(id)sender;
 
 -(void)awakeFromNib;
