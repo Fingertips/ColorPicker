@@ -10,6 +10,15 @@ describe "NSColor additions, to string" do
     color.toRGBString.should == "#ff0000"
   end
   
+  it "returns a CSS RGB representation, which compacts the string when possible" do
+    NSColor.blackColor.toCSSRGBString.should == "#000"
+    NSColor.redColor.toCSSRGBString.should   == "#f00"
+    NSColor.whiteColor.toCSSRGBString.should == "#fff"
+    
+    color = NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 1)
+    color.toCSSRGBString.should == "#cbb298"
+  end
+  
   it "returns a CSS RGBA representation, which does not ignore the alpha component" do
     NSColor.blackColor.toRGBAString.should == "rgb(0,0,0,1)"
     NSColor.redColor.toRGBAString.should   == "rgb(255,0,0,1)"
