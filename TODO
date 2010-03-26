@@ -1,4 +1,3 @@
-- Remove the 'aways on top' behaviour. The window should behave like a regular window after all.
 - Make the window's close button quit the application.
 - The 'Opacity' control is missing. Please fix.
 - Support copy and paste. Support the RGB and RGBA CSS3 color values (see http://www.w3.org/TR/css3-color/#rgb-color and http://www.w3.org/TR/css3-color/#rgba-color) when copying from text. Paste fully opaque colors using the hexadecimal notation (use the three-digit notation when possible), and paste colors with an opacity other than 100% using the rgba numeric integer format.

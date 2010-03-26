@@ -8,7 +8,6 @@
 	
 	NSColorPanel *panel = [NSColorPanel sharedColorPanel];
 	[panel setStyleMask:NSTitledWindowMask|NSMiniaturizableWindowMask|NSResizableWindowMask];
-	[panel setHidesOnDeactivate:NO];
 	[panel setFloatingPanel:YES];
 	[panel makeKeyAndOrderFront:self];
 }
