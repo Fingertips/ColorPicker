@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* ColorPickerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* ColorPickerAppDelegate.m */; };
+		51286DF1115CC2A60088BF7A /* NSColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 51286DF0115CC2A60088BF7A /* NSColorAdditions.m */; };
 		51754D23111980180074BCBD /* ApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51754D22111980180074BCBD /* ApplicationController.m */; };
 		7622A050111C29F600C7013E /* ColorPicker.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7622A04F111C29F600C7013E /* ColorPicker.icns */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -27,6 +28,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		51286DEF115CC2A60088BF7A /* NSColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColorAdditions.h; sourceTree = "<group>"; };
+		51286DF0115CC2A60088BF7A /* NSColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSColorAdditions.m; sourceTree = "<group>"; };
 		51754D21111980180074BCBD /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
 		51754D22111980180074BCBD /* ApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationController.m; sourceTree = "<group>"; };
 		7622A04F111C29F600C7013E /* ColorPicker.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ColorPicker.icns; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 		29B97314FDCFA39411CA2CEA /* ColorPicker */ = {
 			isa = PBXGroup;
 			children = (
+				51286DEF115CC2A60088BF7A /* NSColorAdditions.h */,
+				51286DF0115CC2A60088BF7A /* NSColorAdditions.m */,
 				7622A04F111C29F600C7013E /* ColorPicker.icns */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -230,6 +235,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* ColorPickerAppDelegate.m in Sources */,
 				51754D23111980180074BCBD /* ApplicationController.m in Sources */,
+				51286DF1115CC2A60088BF7A /* NSColorAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

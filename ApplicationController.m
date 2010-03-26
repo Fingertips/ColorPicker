@@ -11,6 +11,10 @@
   [panel setFloatingPanel: YES];
   [panel setShowsAlpha: YES];
   [panel makeKeyAndOrderFront: self];
+  
+  NSLog([[NSColor blackColor] toHexString]);
+  NSLog([[NSColor whiteColor] toHexString]);
+  NSLog([[NSColor redColor] toHexString]);
 }
 
 - (void)windowWillClose:(NSNotification *)aNotification
