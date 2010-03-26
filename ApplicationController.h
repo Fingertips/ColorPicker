@@ -1,5 +1,5 @@
 #import <Cocoa/Cocoa.h>
-
+#import "FTColorPanel.h"
 
 @interface ApplicationController : NSObject {
 }

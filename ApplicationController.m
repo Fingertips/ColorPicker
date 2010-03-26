@@ -1,5 +1,4 @@
 #import "ApplicationController.h"
-#import "FTColorPanel.h"
 
 @implementation ApplicationController
 -(void)awakeFromNib {
