@@ -11,39 +11,39 @@ describe "NSColor additions, to string" do
   end
   
   it "returns a RGB representation, which ignores the alpha component" do
-    NSColor.blackColor.toRGBString.should == "rgb(0,0,0)"
-    NSColor.redColor.toRGBString.should   == "rgb(255,0,0)"
-    NSColor.whiteColor.toRGBString.should == "rgb(255,255,255)"
+    NSColor.blackColor.toRGBString.should == "rgb(0, 0, 0)"
+    NSColor.redColor.toRGBString.should   == "rgb(255, 0, 0)"
+    NSColor.whiteColor.toRGBString.should == "rgb(255, 255, 255)"
     
     color = NSColor.colorWithCalibratedRed(1, green: 0, blue: 0, alpha: 0.5)
-    color.toRGBString.should == "rgb(255,0,0)"
+    color.toRGBString.should == "rgb(255, 0, 0)"
   end
   
   it "returns a RGBA representation, which does not ignore the alpha component" do
-    NSColor.blackColor.toRGBAString.should == "rgba(0,0,0,1)"
-    NSColor.redColor.toRGBAString.should   == "rgba(255,0,0,1)"
-    NSColor.whiteColor.toRGBAString.should == "rgba(255,255,255,1)"
+    NSColor.blackColor.toRGBAString.should == "rgba(0, 0, 0, 1)"
+    NSColor.redColor.toRGBAString.should   == "rgba(255, 0, 0, 1)"
+    NSColor.whiteColor.toRGBAString.should == "rgba(255, 255, 255, 1)"
     
     color = NSColor.colorWithCalibratedRed(1, green: 0, blue: 0, alpha: 0.5)
-    color.toRGBAString.should == "rgba(255,0,0,0.5)"
+    color.toRGBAString.should == "rgba(255, 0, 0, 0.5)"
   end
   
   it "returns a HSL representation, which ignores the alpha component" do
-    NSColor.blackColor.toHSLString.should == "hsl(0,0%,0%)"
-    NSColor.redColor.toHSLString.should   == "hsl(360,100%,100%)"
-    NSColor.whiteColor.toHSLString.should == "hsl(0,0%,100%)"
+    NSColor.blackColor.toHSLString.should == "hsl(0, 0%, 0%)"
+    NSColor.redColor.toHSLString.should   == "hsl(360, 100%, 100%)"
+    NSColor.whiteColor.toHSLString.should == "hsl(0, 0%, 100%)"
     
     color = NSColor.colorWithCalibratedRed(1, green: 0, blue: 0, alpha: 0.5)
-    color.toHSLString.should == "hsl(360,100%,100%)"
+    color.toHSLString.should == "hsl(360, 100%, 100%)"
   end
   
   it "returns a HSL representation, which does not ignore the alpha component" do
-    NSColor.blackColor.toHSLAString.should == "hsla(0,0%,0%,1)"
-    NSColor.redColor.toHSLAString.should   == "hsla(360,100%,100%,1)"
-    NSColor.whiteColor.toHSLAString.should == "hsla(0,0%,100%,1)"
+    NSColor.blackColor.toHSLAString.should == "hsla(0, 0%, 0%, 1)"
+    NSColor.redColor.toHSLAString.should   == "hsla(360, 100%, 100%, 1)"
+    NSColor.whiteColor.toHSLAString.should == "hsla(0, 0%, 100%, 1)"
     
     color = NSColor.colorWithCalibratedRed(1, green: 0, blue: 0, alpha: 0.52)
-    color.toHSLAString.should == "hsla(360,100%,100%,0.52)"
+    color.toHSLAString.should == "hsla(360, 100%, 100%, 0.52)"
   end
   
   # it "returns a CSS representation, automagically converted to the appropriate format" do

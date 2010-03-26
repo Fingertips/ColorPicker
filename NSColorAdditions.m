@@ -25,7 +25,7 @@
 -(NSString *)toRGBString {
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
-  NSString *result = [NSString stringWithFormat: @"rgb(%d,%d,%d)",
+  NSString *result = [NSString stringWithFormat: @"rgb(%d, %d, %d)",
                        (unsigned int)(255 * [color redComponent]),
                        (unsigned int)(255 * [color greenComponent]),
                        (unsigned int)(255 * [color blueComponent])];
@@ -36,7 +36,7 @@
 -(NSString *)toRGBAString {
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
-  NSString *result = [NSString stringWithFormat: @"rgba(%d,%d,%d,%g)",
+  NSString *result = [NSString stringWithFormat: @"rgba(%d, %d, %d, %g)",
                        (unsigned int)(255 * [color redComponent]),
                        (unsigned int)(255 * [color greenComponent]),
                        (unsigned int)(255 * [color blueComponent]),
@@ -48,7 +48,7 @@
 -(NSString *)toHSLString {
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
-  NSString *result = [NSString stringWithFormat: @"hsl(%d,%d%%,%d%%)",
+  NSString *result = [NSString stringWithFormat: @"hsl(%d, %d%%, %d%%)",
                        (unsigned int)(360 * [color hueComponent]),
                        (unsigned int)(100 * [color saturationComponent]),
                        (unsigned int)(100 * [color brightnessComponent])];
@@ -59,7 +59,7 @@
 -(NSString *)toHSLAString {
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
-  NSString *result = [NSString stringWithFormat: @"hsla(%d,%d%%,%d%%,%g)",
+  NSString *result = [NSString stringWithFormat: @"hsla(%d, %d%%, %d%%, %g)",
                        (unsigned int)(360 * [color hueComponent]),
                        (unsigned int)(100 * [color saturationComponent]),
                        (unsigned int)(100 * [color brightnessComponent]),
