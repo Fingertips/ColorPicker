@@ -1,5 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface NSColor (Additions)
--(NSString *)toHexString;
+-(NSString *)toRGBString;
+-(NSString *)toRGBAString;
 @end

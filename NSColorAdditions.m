@@ -1,8 +1,8 @@
 #import "NSColorAdditions.h"
 
-@implementation NSColor (Additions)
 // TODO: Do we need to use device or calibrated, or even make it a pref?
--(NSString *)toHexString
+@implementation NSColor (Additions)
+-(NSString *)toRGBString
 {
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
@@ -10,6 +10,19 @@
                        (unsigned int)(255 * [color redComponent]),
                        (unsigned int)(255 * [color greenComponent]),
                        (unsigned int)(255 * [color blueComponent])];
+  
+  return result;
+}
+
+-(NSString *)toRGBAString
+{
+  NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+  
+  NSString *result = [NSString stringWithFormat: @"rgb(%d,%d,%d,%g)",
+                       (unsigned int)(255 * [color redComponent]),
+                       (unsigned int)(255 * [color greenComponent]),
+                       (unsigned int)(255 * [color blueComponent]),
+                       (float)[color alphaComponent]];
   
   return result;
 }
