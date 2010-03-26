@@ -13,18 +13,6 @@
   return result;
 }
 
--(NSString *)toRGBAString {
-  NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
-  
-  NSString *result = [NSString stringWithFormat: @"rgb(%d,%d,%d,%g)",
-                       (unsigned int)(255 * [color redComponent]),
-                       (unsigned int)(255 * [color greenComponent]),
-                       (unsigned int)(255 * [color blueComponent]),
-                       (float)[color alphaComponent]];
-  
-  return result;
-}
-
 // Compacts a regular RGB string where possible.
 //
 // I.e. this can be compacted:
@@ -46,4 +34,17 @@
     return original;
   }
 }
+
+-(NSString *)toCSSRGBAString {
+  NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+  
+  NSString *result = [NSString stringWithFormat: @"rgb(%d,%d,%d,%g)",
+                       (unsigned int)(255 * [color redComponent]),
+                       (unsigned int)(255 * [color greenComponent]),
+                       (unsigned int)(255 * [color blueComponent]),
+                       (float)[color alphaComponent]];
+  
+  return result;
+}
+
 @end

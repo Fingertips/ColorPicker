@@ -2,7 +2,6 @@
 
 @interface NSColor (Additions)
 -(NSString *)toRGBString;
--(NSString *)toRGBAString;
-
 -(NSString *)toCSSRGBString;
+-(NSString *)toCSSRGBAString;
 @end

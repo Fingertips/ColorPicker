@@ -20,11 +20,11 @@ describe "NSColor additions, to string" do
   end
   
   it "returns a CSS RGBA representation, which does not ignore the alpha component" do
-    NSColor.blackColor.toRGBAString.should == "rgb(0,0,0,1)"
-    NSColor.redColor.toRGBAString.should   == "rgb(255,0,0,1)"
-    NSColor.whiteColor.toRGBAString.should == "rgb(255,255,255,1)"
+    NSColor.blackColor.toCSSRGBAString.should == "rgb(0,0,0,1)"
+    NSColor.redColor.toCSSRGBAString.should   == "rgb(255,0,0,1)"
+    NSColor.whiteColor.toCSSRGBAString.should == "rgb(255,255,255,1)"
     
     color = NSColor.colorWithCalibratedRed(1, green: 0, blue: 0, alpha: 0.5)
-    color.toRGBAString.should == "rgb(255,0,0,0.5)"
+    color.toCSSRGBAString.should == "rgb(255,0,0,0.5)"
   end
 end
