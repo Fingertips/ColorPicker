@@ -4,4 +4,5 @@
 -(NSString *)toRGBString;
 -(NSString *)toCSSRGBString;
 -(NSString *)toCSSRGBAString;
+-(NSString *)toCSSString;
 @end

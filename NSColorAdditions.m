@@ -47,4 +47,9 @@
   return result;
 }
 
+-(NSString *)toCSSString {
+  NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+  return ([color alphaComponent] == 1.0) ? [self toCSSRGBString] : [self toCSSRGBAString];
+}
+
 @end

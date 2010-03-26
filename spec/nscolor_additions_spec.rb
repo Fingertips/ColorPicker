@@ -27,4 +27,20 @@ describe "NSColor additions, to string" do
     color = NSColor.colorWithCalibratedRed(1, green: 0, blue: 0, alpha: 0.5)
     color.toCSSRGBAString.should == "rgb(255,0,0,0.5)"
   end
+  
+  it "returns a CSS representation, automagically converted to the appropriate format" do
+    color = NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 1)
+    color.toCSSString.should == "#cbb298"
+    
+    # is this correct??
+    # my calculations say: 204,178,153,0.8
+    color = NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 0.8)
+    color.toCSSString.should == "rgb(203,178,152,0.8)"
+    
+    color = NSColor.colorWithCalibratedRed(1, green: 0, blue: 0, alpha: 1)
+    color.toCSSString.should == "#f00"
+    
+    color = NSColor.colorWithCalibratedRed(1, green: 0, blue: 0, alpha: 0.5)
+    color.toCSSString.should == "rgb(255,0,0,0.5)"
+  end
 end
