@@ -28,6 +28,24 @@ describe "NSColor additions, to string" do
     color.toRGBAString.should == "rgba(255,0,0,0.5)"
   end
   
+  it "returns a HSL representation, which ignores the alpha component" do
+    NSColor.blackColor.toHSLString.should == "hsl(0,0%,0%)"
+    NSColor.redColor.toHSLString.should   == "hsl(360,100%,100%)"
+    NSColor.whiteColor.toHSLString.should == "hsl(0,0%,100%)"
+    
+    color = NSColor.colorWithCalibratedRed(1, green: 0, blue: 0, alpha: 0.5)
+    color.toHSLString.should == "hsl(360,100%,100%)"
+  end
+  
+  it "returns a HSL representation, which does not ignore the alpha component" do
+    NSColor.blackColor.toHSLAString.should == "hsla(0,0%,0%,1)"
+    NSColor.redColor.toHSLAString.should   == "hsla(360,100%,100%,1)"
+    NSColor.whiteColor.toHSLAString.should == "hsla(0,0%,100%,1)"
+    
+    color = NSColor.colorWithCalibratedRed(1, green: 0, blue: 0, alpha: 0.52)
+    color.toHSLAString.should == "hsla(360,100%,100%,0.52)"
+  end
+  
   # it "returns a CSS representation, automagically converted to the appropriate format" do
   #   color = NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 1)
   #   color.toCSSString.should == "#cbb298"

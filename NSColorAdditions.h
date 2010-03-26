@@ -12,4 +12,7 @@
 
 -(NSString *)toRGBString;
 -(NSString *)toRGBAString;
+
+-(NSString *)toHSLString;
+-(NSString *)toHSLAString;
 @end

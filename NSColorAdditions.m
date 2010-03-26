@@ -45,6 +45,29 @@
   return result;
 }
 
+-(NSString *)toHSLString {
+  NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+  
+  NSString *result = [NSString stringWithFormat: @"hsl(%d,%d%%,%d%%)",
+                       (unsigned int)(360 * [color hueComponent]),
+                       (unsigned int)(100 * [color saturationComponent]),
+                       (unsigned int)(100 * [color brightnessComponent])];
+  
+  return result;
+}
+
+-(NSString *)toHSLAString {
+  NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+  
+  NSString *result = [NSString stringWithFormat: @"hsla(%d,%d%%,%d%%,%g)",
+                       (unsigned int)(360 * [color hueComponent]),
+                       (unsigned int)(100 * [color saturationComponent]),
+                       (unsigned int)(100 * [color brightnessComponent]),
+                       (float)[color alphaComponent]];
+  
+  return result;
+}
+
 // -(NSString *)toCSSString {
 //   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
 //   return ([color alphaComponent] == 1.0) ? [self toCSSRGBString] : [self toCSSRGBAString];
