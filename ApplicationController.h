@@ -4,5 +4,5 @@
 @interface ApplicationController : NSObject {
 }
 - (void)awakeFromNib;
-- (void)applicationDidBecomeActive:(NSNotification *)aNotification;
+- (void)windowWillClose:(NSNotification *)aNotification;
 @end
