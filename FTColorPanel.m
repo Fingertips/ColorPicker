@@ -3,7 +3,8 @@
 #define CONTENT_BOX_INDEX 3
 #define DIVIDER_INDEX 5
 
-#define CONTENT_BOX_OFFSET 41
+#define CONTENT_BOX_OFFSET 30
+#define SPACING 8
 
 @implementation FTColorPanel
 -(FTColorPanel *)init {
@@ -13,6 +14,8 @@
     [self setStyleMask: NSTitledWindowMask|NSClosableWindowMask|NSMiniaturizableWindowMask|NSResizableWindowMask];
     [self setFloatingPanel: YES];
     [self setShowsAlpha: YES];
+    
+    float totalWidth = [[self contentView] frame].size.width;
     
     // Make the 'content box', which holds the selected mode's content view,
     // a bit smaller to make place for the new divider and text field and move
@@ -25,16 +28,17 @@
     
     // Add a new divider under the opacity slider
     NSBox *divider = [[[self contentView] subviews] objectAtIndex: DIVIDER_INDEX];
-    NSRect newDividerFrame = NSOffsetRect([divider frame], 0, 37);
+    // NSRect newDividerFrame = NSOffsetRect([divider frame], 0, 26);
+    NSRect newDividerFrame = NSMakeRect(0, contentBoxFrame.origin.y - (SPACING - 1), totalWidth, 1);
     NSBox *newDivider = [[NSBox alloc] initWithFrame: newDividerFrame];
     [newDivider setBoxType: NSBoxSeparator];
     [newDivider setAutoresizingMask: NSViewWidthSizable];
     [[self contentView] addSubview: newDivider];
     
     // Add the new text field underneath the new divider and the existing divider above
-    float width = contentBoxFrame.size.width - 16;
     float fontSize = [NSFont smallSystemFontSize];
-    colorCodeField = [[NSTextField alloc] initWithFrame: NSMakeRect(8, newDividerFrame.origin.y - (fontSize + 4), width, fontSize)];
+    float colorCodeFieldY = newDividerFrame.origin.y - (fontSize + SPACING - 2); // the -2 is because of a pixel margin on top and bottom
+    colorCodeField = [[NSTextField alloc] initWithFrame: NSMakeRect(SPACING, colorCodeFieldY, totalWidth - (2 * SPACING), fontSize)];
     [colorCodeField setAutoresizingMask: NSViewWidthSizable|NSViewMaxYMargin];
     // set the text properties
     [[colorCodeField cell] setFont: [NSFont systemFontOfSize: fontSize]];
