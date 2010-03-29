@@ -26,6 +26,9 @@
     float width = contentBoxFrame.size.width - 16;
     colorCodeField = [[NSTextField alloc] initWithFrame: NSMakeRect(8, contentBoxFrame.origin.y + 6, width, 20)];
     [colorCodeField setAutoresizingMask: NSViewWidthSizable|NSViewMaxYMargin];
+    // set the text properties
+    NSFont *font = [NSFont systemFontOfSize: [NSFont smallSystemFontSize]];
+    [[colorCodeField cell] setFont: font];
     [colorCodeField setAlignment: NSCenterTextAlignment];
     // make it look like a label as in IB
     [colorCodeField setBezeled: NO];
