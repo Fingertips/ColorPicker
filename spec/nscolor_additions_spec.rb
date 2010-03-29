@@ -44,13 +44,18 @@ describe "NSColor additions, from a string, with mixed upper and lowercase chara
   end
   
   it "parses a RGBA representation" do
-    NSColor.colorFromString("\trgba(206,183, 160,1)").should equal_color(@opaqueColor)
+    NSColor.colorFromString("\trgba(206,183, 160, 1)").should equal_color(@opaqueColor)
     NSColor.colorFromString("RgBa(206,\t183,160,0.54)\n").should equal_color(@transparentColor)
   end
   
   it "parses a HSL representation" do
     NSColor.colorFromString("\thsl(29,22%, 81%)").should equal_color(@opaqueColor)
     NSColor.colorFromString("HsL(29,\t22%,81%)\n").should equal_color(@opaqueColor)
+  end
+  
+  it "parses a HSLA representation" do
+    NSColor.colorFromString("\thsla(29,22%, 81%, 1)").should equal_color(@opaqueColor)
+    NSColor.colorFromString("HsLa(29,\t22%,81%0.54)\n").should equal_color(@transparentColor)
   end
 end
 

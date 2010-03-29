@@ -92,6 +92,23 @@
     // NSLog(@"Parsed: %d, %d, %d", hue, saturation, brightness);
     
     return [NSColor colorWithCalibratedHue:(hue / 360.0) saturation:(saturation / 100.0) brightness:(brightness / 100.0) alpha:alpha];
+    
+  } else if ([scanner scanString:@"hsla(" intoString:nil]) {
+    NSLog(@"HSLA!");
+    
+    NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @"%,)"];
+    [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [scanner setCharactersToBeSkipped: skip];
+    
+    unsigned int hue, saturation, brightness;
+    [scanner scanInt: &hue];
+    [scanner scanInt: &saturation];
+    [scanner scanInt: &brightness];
+    [scanner scanFloat: &alpha];
+    
+    // NSLog(@"Parsed: %d, %d, %d, %f", hue, saturation, brightness, alpha);
+    
+    return [NSColor colorWithCalibratedHue:(hue / 360.0) saturation:(saturation / 100.0) brightness:(brightness / 100.0) alpha:alpha];
   }
   
   return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
