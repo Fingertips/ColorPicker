@@ -9,106 +9,58 @@
   [scanner scanCharactersFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] intoString:nil];
   
   if ([scanner scanString:@"#" intoString:nil]) {
-    // NSLog(@"HEX!");
-    
     unsigned int r, g, b;
     NSString *hex = @"000000";
     NSCharacterSet *hexChars = [NSCharacterSet characterSetWithCharactersInString: @"0123456789abcdef"];
-    
     [scanner scanCharactersFromSet:hexChars intoString:&hex];
-    switch ([hex length]) {
-      case 3:
-        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 1)]] scanHexInt: &r];
-        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(1, 1)]] scanHexInt: &g];
-        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 1)]] scanHexInt: &b];
-        r = r + (r * 16);
-        g = g + (g * 16);
-        b = b + (b * 16);
-        break;
-      
-      case 6:
-        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 2)]] scanHexInt: &r];
-        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 2)]] scanHexInt: &g];
-        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(4, 2)]] scanHexInt: &b];
-        break;
-      
-      default:
-        return nil;
+    
+    if ([hex length] == 3) {
+      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 1)]] scanHexInt: &r];
+      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(1, 1)]] scanHexInt: &g];
+      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 1)]] scanHexInt: &b];
+      r = r + (r * 16);
+      g = g + (g * 16);
+      b = b + (b * 16);
+    } else if ([hex length] == 6) {
+      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 2)]] scanHexInt: &r];
+      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 2)]] scanHexInt: &g];
+      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(4, 2)]] scanHexInt: &b];
+    } else {
+      return nil;
     }
     
     red   = r / 255.0;
     green = g / 255.0;
     blue  = b / 255.0;
     
-  } else if ([scanner scanString:@"rgb(" intoString:nil]) {
-    // NSLog(@"RGB!");
-    
-    NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @",)"];
-    [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [scanner setCharactersToBeSkipped: skip];
-    
-    unsigned int r, g, b;
-    [scanner scanInt: &r];
-    [scanner scanInt: &g];
-    [scanner scanInt: &b];
-    
-    // NSLog(@"Parsed: %d, %d, %d", r, g, b);
-    
-    red   = r / 255.0;
-    green = g / 255.0;
-    blue  = b / 255.0;
-    
-  } else if ([scanner scanString:@"rgba(" intoString:nil]) {
-    // NSLog(@"RGBA!");
-    
-    NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @",)"];
-    [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [scanner setCharactersToBeSkipped: skip];
-    
-    unsigned int r, g, b;
-    [scanner scanInt: &r];
-    [scanner scanInt: &g];
-    [scanner scanInt: &b];
-    [scanner scanFloat: &alpha];
-    
-    // NSLog(@"Parsed: %d, %d, %d, %f", r, g, b, alpha);
-    
-    red   = r / 255.0;
-    green = g / 255.0;
-    blue  = b / 255.0;
-    
-  } else if ([scanner scanString:@"hsl(" intoString:nil]) {
-    // NSLog(@"HSL!");
-    
+  } else {
     NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @"%,)"];
     [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [scanner setCharactersToBeSkipped: skip];
     
-    unsigned int hue, saturation, brightness;
-    [scanner scanInt: &hue];
-    [scanner scanInt: &saturation];
-    [scanner scanInt: &brightness];
-    
-    // NSLog(@"Parsed: %d, %d, %d", hue, saturation, brightness);
-    
-    return [NSColor colorWithCalibratedHue:(hue / 360.0) saturation:(saturation / 100.0) brightness:(brightness / 100.0) alpha:alpha];
-    
-  } else if ([scanner scanString:@"hsla(" intoString:nil]) {
-    // NSLog(@"HSLA!");
-    
-    NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @"%,)"];
-    [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [scanner setCharactersToBeSkipped: skip];
-    
-    unsigned int hue, saturation, brightness;
-    [scanner scanInt: &hue];
-    [scanner scanInt: &saturation];
-    [scanner scanInt: &brightness];
-    [scanner scanFloat: &alpha];
-    
-    // NSLog(@"Parsed: %d, %d, %d, %f", hue, saturation, brightness, alpha);
-    
-    return [NSColor colorWithCalibratedHue:(hue / 360.0) saturation:(saturation / 100.0) brightness:(brightness / 100.0) alpha:alpha];
+    if ([scanner scanString:@"rgb(" intoString:nil] || [scanner scanString:@"rgba(" intoString:nil]) {
+      unsigned int r, g, b;
+      [scanner scanInt: &r];
+      [scanner scanInt: &g];
+      [scanner scanInt: &b];
+      [scanner scanFloat: &alpha];
+      
+      red   = r / 255.0;
+      green = g / 255.0;
+      blue  = b / 255.0;
+      
+    } else if ([scanner scanString:@"hsl(" intoString:nil] || [scanner scanString:@"hsla(" intoString:nil]) {
+      unsigned int hue, saturation, brightness;
+      [scanner scanInt: &hue];
+      [scanner scanInt: &saturation];
+      [scanner scanInt: &brightness];
+      [scanner scanFloat: &alpha];
+      
+      return [NSColor colorWithCalibratedHue:(hue / 360.0) saturation:(saturation / 100.0) brightness:(brightness / 100.0) alpha:alpha];
+      
+    } else {
+      return nil;
+    }
   }
   
   return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
