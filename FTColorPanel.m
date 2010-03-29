@@ -37,8 +37,8 @@
     
     // Add the new text field underneath the new divider and the existing divider above
     float fontSize = [NSFont smallSystemFontSize];
-    float colorCodeFieldY = newDividerFrame.origin.y - (fontSize + SPACING - 2); // the -2 is because of a pixel margin on top and bottom
-    colorCodeField = [[NSTextField alloc] initWithFrame: NSMakeRect(SPACING, colorCodeFieldY, totalWidth - (2 * SPACING), fontSize)];
+    float colorCodeFieldY = newDividerFrame.origin.y - (fontSize + SPACING);
+    colorCodeField = [[NSTextField alloc] initWithFrame: NSMakeRect(SPACING, colorCodeFieldY, totalWidth - (2 * SPACING), fontSize + 2)];
     [colorCodeField setAutoresizingMask: NSViewWidthSizable|NSViewMaxYMargin];
     // set the text properties
     [[colorCodeField cell] setFont: [NSFont systemFontOfSize: fontSize]];
