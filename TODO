@@ -1,3 +1,4 @@
+- Check if NSColor doesn't return the RGB values mixed with opacity (see the ‘returns a short version of all representations’ NSColorAdditions spec)
 - Support copy and paste. Support the RGB and RGBA CSS3 color values (see http://www.w3.org/TR/css3-color/#rgb-color and http://www.w3.org/TR/css3-color/#rgba-color) when copying from text. Paste fully opaque colors using the hexadecimal notation (use the three-digit notation when possible), and paste colors with an opacity other than 100% using the rgba numeric integer format.
 - Remove unused menu items.
 - Check if it's possible to add a hex ‘slider’

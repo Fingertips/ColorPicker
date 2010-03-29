@@ -10,12 +10,12 @@
 //   "#cbb298" => "#cbb298"
 -(NSString *)toHexString;
 
--(NSString *)toRGBString;
--(NSString *)toRGBAString;
+-(NSString *)toRGBString:(BOOL)shortVersion;
+-(NSString *)toRGBAString:(BOOL)shortVersion;
 
--(NSString *)toHSLString;
--(NSString *)toHSLAString;
+-(NSString *)toHSLString:(BOOL)shortVersion;
+-(NSString *)toHSLAString:(BOOL)shortVersion;
 
--(NSString *)toObjcNSColor;
--(NSString *)toMacRubyNSColor;
+-(NSString *)toObjcNSColor:(BOOL)shortVersion;
+-(NSString *)toMacRubyNSColor:(BOOL)shortVersion;
 @end
