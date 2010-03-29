@@ -1,0 +1,13 @@
+recipe :ruby
+Ruby.runner_bin = 'macbacon'
+
+process do |files|
+  specs = files.take_and_map do |file|
+    case file
+    when /NSColorAdditions\.(h|m)/
+      'spec/nscolor_additions_spec.rb'
+    end
+  end
+  
+  Ruby.run_tests specs
+end
