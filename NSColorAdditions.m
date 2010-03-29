@@ -9,7 +9,7 @@
   [scanner scanCharactersFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] intoString:nil];
   
   if ([scanner scanString:@"#" intoString:nil]) {
-    NSLog(@"HEX!");
+    // NSLog(@"HEX!");
     
     unsigned int r, g, b;
     NSString *hex = @"000000";
@@ -41,7 +41,7 @@
     blue  = b / 255.0;
     
   } else if ([scanner scanString:@"rgb(" intoString:nil]) {
-    NSLog(@"RGB!");
+    // NSLog(@"RGB!");
     
     NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @",)"];
     [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -59,7 +59,7 @@
     blue  = b / 255.0;
     
   } else if ([scanner scanString:@"rgba(" intoString:nil]) {
-    NSLog(@"RGBA!");
+    // NSLog(@"RGBA!");
     
     NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @",)"];
     [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -78,7 +78,7 @@
     blue  = b / 255.0;
     
   } else if ([scanner scanString:@"hsl(" intoString:nil]) {
-    NSLog(@"HSL!");
+    // NSLog(@"HSL!");
     
     NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @"%,)"];
     [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -94,7 +94,7 @@
     return [NSColor colorWithCalibratedHue:(hue / 360.0) saturation:(saturation / 100.0) brightness:(brightness / 100.0) alpha:alpha];
     
   } else if ([scanner scanString:@"hsla(" intoString:nil]) {
-    NSLog(@"HSLA!");
+    // NSLog(@"HSLA!");
     
     NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @"%,)"];
     [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
