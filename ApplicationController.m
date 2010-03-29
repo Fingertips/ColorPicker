@@ -16,6 +16,10 @@
 }
 
 -(IBAction)copyAs:(id)sender {
+  NSMenuItem *current = [[sender menu] itemAtIndex: [panel colorMode]];
+  [current setState: NSOffState];
+  [sender setState: NSOnState];
+  
   [panel setColorMode: (int)[sender tag]];
   [self copy: nil];
 }

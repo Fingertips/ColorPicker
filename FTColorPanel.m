@@ -3,7 +3,7 @@
 @implementation FTColorPanel
 -(FTColorPanel *)init {
   if ([super init]) {
-    _colorMode = MACRUBY_NSCOLOR_COLOR_MODE;
+    _colorMode = HEX_COLOR_MODE;
     
     [self setStyleMask: NSTitledWindowMask|NSClosableWindowMask|NSMiniaturizableWindowMask|NSResizableWindowMask];
     [self setFloatingPanel: YES];
