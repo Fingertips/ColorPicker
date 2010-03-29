@@ -10,15 +10,16 @@ class NSColor
   end
 end
 
-describe "NSColor additions, from string" do
+describe "NSColor additions, from a string, with mixed upper and lowercase characters and whitespace" do
   def equal_color(other)
     lambda do |color|
-      delta = 0.1
-      color.redComponent.should.be.close(delta, other.redComponent)
-      color.greenComponent.should.be.close(delta, other.greenComponent)
-      color.blueComponent.should.be.close(delta, other.blueComponent)
-      color.alphaComponent.should.be.close(delta, other.alphaComponent)
-      true
+      delta = 0.005
+      %w{ red green blue alpha }.all? do |type|
+        method = "#{type}Component"
+        value = color.send(method)
+        range = (value - delta)..(value + delta)
+        range.include?(other.send(method))
+      end
     end
   end
   
@@ -27,14 +28,19 @@ describe "NSColor additions, from string" do
     @transparentColor = NSColor.colorWithCalibratedRed(0.81, green: 0.72, blue: 0.63, alpha: 0.54)
   end
   
-  it "parses a hex3 representation, with mixed lower and upper case letters" do
+  it "parses a hex3 representation" do
     NSColor.colorFromString("#f0F").should == NSColor.magentaColor
     NSColor.colorFromString("\t#F0f\n").should == NSColor.magentaColor
   end
   
-  it "parses a hex6 representation, with mixed lower and upper case letters" do
+  it "parses a hex6 representation" do
     NSColor.colorFromString("#ceB7a0").should equal_color(@opaqueColor)
     NSColor.colorFromString("\t#ceB7a0\n").should equal_color(@opaqueColor)
+  end
+  
+  it "parses a RGB representation" do
+    NSColor.colorFromString("\trgb(206,183,\s160)").should equal_color(@opaqueColor)
+    NSColor.colorFromString("RgB(206,\t183,160)\n").should equal_color(@opaqueColor)
   end
 end
 

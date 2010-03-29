@@ -5,15 +5,16 @@
 +(NSColor *)colorFromString:(NSString *)colorRepresentation {
   float red, green, blue, alpha = 1.0;
   
-  NSCharacterSet *hexChars = [NSCharacterSet characterSetWithCharactersInString: @"0123456789abcdef"];
-  NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-  
   NSScanner *scanner = [NSScanner scannerWithString: [colorRepresentation lowercaseString]];
-  [scanner scanCharactersFromSet:whitespace intoString:nil];
+  [scanner scanCharactersFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] intoString:nil];
   
   if ([scanner scanString:@"#" intoString:nil]) {
+    NSLog(@"HEX!");
+    
     unsigned int r, g, b;
     NSString *hex = @"000000";
+    NSCharacterSet *hexChars = [NSCharacterSet characterSetWithCharactersInString: @"0123456789abcdef"];
+    
     [scanner scanCharactersFromSet:hexChars intoString:&hex];
     switch ([hex length]) {
       case 3:
@@ -34,6 +35,24 @@
       default:
         return nil;
     }
+    
+    red   = r / 255.0;
+    green = g / 255.0;
+    blue  = b / 255.0;
+    
+  } else if ([scanner scanString:@"rgb(" intoString:nil]) {
+    NSLog(@"RGB!");
+    
+    NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @",)"];
+    [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [scanner setCharactersToBeSkipped: skip];
+    
+    unsigned int r, g, b;
+    [scanner scanInt: &r];
+    [scanner scanInt: &g];
+    [scanner scanInt: &b];
+    
+    // NSLog(@"Parsed: %d, %d, %d", r, g, b);
     
     red   = r / 255.0;
     green = g / 255.0;
