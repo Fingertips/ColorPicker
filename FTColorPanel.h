@@ -20,6 +20,6 @@
 -(int)colorMode;
 -(void)setColorMode:(int)colorMode;
 
--(NSString *)representationStringOfColor;
+-(NSString *)representationStringOfColor:(BOOL)shortVersion;
 -(void)updateStringRepresentationOfColor;
 @end

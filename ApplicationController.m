@@ -8,7 +8,7 @@
 }
 
 -(IBAction)copy:(id)sender {
-  NSArray *contents = [NSArray arrayWithObject: [panel representationStringOfColor]];
+  NSArray *contents = [NSArray arrayWithObject: [panel representationStringOfColor: NO]];
   
   NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
   [pasteboard clearContents];

@@ -55,21 +55,21 @@
   [self updateStringRepresentationOfColor];
 }
 
--(NSString *)representationStringOfColor {
+-(NSString *)representationStringOfColor:(BOOL)shortVersion {
   NSColor *color = [self color];
   
   switch (_colorMode) {
     case HEX_COLOR_MODE:             return [color toHexString];
-    case RGB_COLOR_MODE:             return [color toRGBString];
-    case RGBA_COLOR_MODE:            return [color toRGBAString];
-    case HSL_COLOR_MODE:             return [color toHSLString];
-    case HSLA_COLOR_MODE:            return [color toHSLAString];
-    case OBJC_NSCOLOR_COLOR_MODE:    return [color toObjcNSColor];
-    case MACRUBY_NSCOLOR_COLOR_MODE: return [color toMacRubyNSColor];
+    case RGB_COLOR_MODE:             return [color toRGBString: shortVersion];
+    case RGBA_COLOR_MODE:            return [color toRGBAString: shortVersion];
+    case HSL_COLOR_MODE:             return [color toHSLString: shortVersion];
+    case HSLA_COLOR_MODE:            return [color toHSLAString: shortVersion];
+    case OBJC_NSCOLOR_COLOR_MODE:    return [color toObjcNSColor: shortVersion];
+    case MACRUBY_NSCOLOR_COLOR_MODE: return [color toMacRubyNSColor: shortVersion];
   }
 }
 
 -(void)updateStringRepresentationOfColor {
-  [colorCodeField setStringValue: [self representationStringOfColor]];
+  [colorCodeField setStringValue: [self representationStringOfColor: YES]];
 }
 @end
