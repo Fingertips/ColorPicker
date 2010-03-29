@@ -1,9 +1,6 @@
 #import <Cocoa/Cocoa.h>
 #import "NSColorAdditions.h"
 
-#define CONTENT_BOX_INDEX 3
-#define DIVIDER_INDEX 5
-
 #define HEX_COLOR_MODE 0
 #define RGB_COLOR_MODE 1
 #define RGBA_COLOR_MODE 2

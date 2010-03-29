@@ -1,5 +1,10 @@
 #import "FTColorPanel.h"
 
+#define CONTENT_BOX_INDEX 3
+#define DIVIDER_INDEX 5
+
+#define CONTENT_BOX_OFFSET 41
+
 @implementation FTColorPanel
 -(FTColorPanel *)init {
   if ([super init]) {
@@ -10,25 +15,29 @@
     [self setShowsAlpha: YES];
     
     // Make the 'content box', which holds the selected mode's content view,
-    // a bit smaller to make place for the new divider and text field
+    // a bit smaller to make place for the new divider and text field and move
+    // it up by the same offset to locate it in the original position.
     id *contentBox = [[[self contentView] subviews] objectAtIndex: CONTENT_BOX_INDEX];
     NSRect contentBoxFrame = [contentBox frame];
-    [contentBox setFrame: NSInsetRect(contentBoxFrame, 0, 41)];
+    contentBoxFrame.origin.y += CONTENT_BOX_OFFSET;
+    contentBoxFrame.size.height -= CONTENT_BOX_OFFSET;
+    [contentBox setFrame: contentBoxFrame];
     
     // Add a new divider under the opacity slider
     NSBox *divider = [[[self contentView] subviews] objectAtIndex: DIVIDER_INDEX];
-    NSBox *newDivider = [[NSBox alloc] initWithFrame: NSOffsetRect([divider frame], 0, 37)];
+    NSRect newDividerFrame = NSOffsetRect([divider frame], 0, 37);
+    NSBox *newDivider = [[NSBox alloc] initWithFrame: newDividerFrame];
     [newDivider setBoxType: NSBoxSeparator];
     [newDivider setAutoresizingMask: NSViewWidthSizable];
     [[self contentView] addSubview: newDivider];
     
     // Add the new text field underneath the new divider and the existing divider above
     float width = contentBoxFrame.size.width - 16;
-    colorCodeField = [[NSTextField alloc] initWithFrame: NSMakeRect(8, contentBoxFrame.origin.y + 6, width, 20)];
+    float fontSize = [NSFont smallSystemFontSize];
+    colorCodeField = [[NSTextField alloc] initWithFrame: NSMakeRect(8, newDividerFrame.origin.y - (fontSize + 4), width, fontSize)];
     [colorCodeField setAutoresizingMask: NSViewWidthSizable|NSViewMaxYMargin];
     // set the text properties
-    NSFont *font = [NSFont systemFontOfSize: [NSFont smallSystemFontSize]];
-    [[colorCodeField cell] setFont: font];
+    [[colorCodeField cell] setFont: [NSFont systemFontOfSize: fontSize]];
     [colorCodeField setAlignment: NSCenterTextAlignment];
     // make it look like a label as in IB
     [colorCodeField setBezeled: NO];
