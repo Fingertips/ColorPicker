@@ -1,9 +1,47 @@
 require File.expand_path('../spec_helper', __FILE__)
 
+class NSColor
+  def ==(other)
+    isEqualTo(other) == 1
+  end
+  
+  def inspect
+    "{ #{description} }"
+  end
+end
+
+describe "NSColor additions, from string" do
+  def equal_color(other)
+    lambda do |color|
+      delta = 0.1
+      color.redComponent.should.be.close(delta, other.redComponent)
+      color.greenComponent.should.be.close(delta, other.greenComponent)
+      color.blueComponent.should.be.close(delta, other.blueComponent)
+      color.alphaComponent.should.be.close(delta, other.alphaComponent)
+      true
+    end
+  end
+  
+  before do
+    @opaqueColor = NSColor.colorWithCalibratedRed(0.81, green: 0.72, blue: 0.63, alpha: 1.0)
+    @transparentColor = NSColor.colorWithCalibratedRed(0.81, green: 0.72, blue: 0.63, alpha: 0.54)
+  end
+  
+  it "parses a hex3 representation, with mixed lower and upper case letters" do
+    NSColor.colorFromString("#f0F").should == NSColor.magentaColor
+    NSColor.colorFromString("\t#F0f\n").should == NSColor.magentaColor
+  end
+  
+  it "parses a hex6 representation, with mixed lower and upper case letters" do
+    NSColor.colorFromString("#ceB7a0").should equal_color(@opaqueColor)
+    NSColor.colorFromString("\t#ceB7a0\n").should equal_color(@opaqueColor)
+  end
+end
+
 describe "NSColor additions, to string" do
   it "returns a hex6 representation, or hex3 when possible" do
-    color = NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 1)
-    color.toHexString.should == "#cbb298"
+    color = NSColor.colorWithCalibratedRed(0.81, green: 0.72, blue: 0.63, alpha: 0.54)
+    color.toHexString.should == "#ceb7a0"
     
     NSColor.blackColor.toHexString.should == "#000"
     NSColor.redColor.toHexString.should   == "#f00"

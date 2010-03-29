@@ -1,6 +1,8 @@
 #import <Cocoa/Cocoa.h>
 
 @interface NSColor (Additions)
++(NSColor *)colorFromString:(NSString *)colorRepresentation;
+
 // Compacts a regular hex6 string where possible.
 //
 // I.e. this can be compacted:

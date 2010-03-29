@@ -2,6 +2,47 @@
 
 // TODO: Do we need to use device or calibrated, or even make it a pref?
 @implementation NSColor (Additions)
++(NSColor *)colorFromString:(NSString *)colorRepresentation {
+  float red, green, blue, alpha = 1.0;
+  
+  NSCharacterSet *hexChars = [NSCharacterSet characterSetWithCharactersInString: @"0123456789abcdef"];
+  NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+  
+  NSScanner *scanner = [NSScanner scannerWithString: [colorRepresentation lowercaseString]];
+  [scanner scanCharactersFromSet:whitespace intoString:nil];
+  
+  if ([scanner scanString:@"#" intoString:nil]) {
+    unsigned int r, g, b;
+    NSString *hex = @"000000";
+    [scanner scanCharactersFromSet:hexChars intoString:&hex];
+    switch ([hex length]) {
+      case 3:
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 1)]] scanHexInt: &r];
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(1, 1)]] scanHexInt: &g];
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 1)]] scanHexInt: &b];
+        r = r + (r * 16);
+        g = g + (g * 16);
+        b = b + (b * 16);
+        break;
+      
+      case 6:
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 2)]] scanHexInt: &r];
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 2)]] scanHexInt: &g];
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(4, 2)]] scanHexInt: &b];
+        break;
+      
+      default:
+        return nil;
+    }
+    
+    red   = r / 255.0;
+    green = g / 255.0;
+    blue  = b / 255.0;
+  }
+  
+  return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
+}
+
 -(NSString *)toHexString {
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
