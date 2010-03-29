@@ -42,6 +42,11 @@ describe "NSColor additions, from a string, with mixed upper and lowercase chara
     NSColor.colorFromString("\trgb(206,183,\s160)").should equal_color(@opaqueColor)
     NSColor.colorFromString("RgB(206,\t183,160)\n").should equal_color(@opaqueColor)
   end
+  
+  it "parses a RGBA representation" do
+    NSColor.colorFromString("\trgba(206,183,\s160,1)").should equal_color(@opaqueColor)
+    NSColor.colorFromString("RgBa(206,\t183,160,0.54)\n").should equal_color(@transparentColor)
+  end
 end
 
 describe "NSColor additions, to string" do

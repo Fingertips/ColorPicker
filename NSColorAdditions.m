@@ -57,6 +57,26 @@
     red   = r / 255.0;
     green = g / 255.0;
     blue  = b / 255.0;
+    
+  } else if ([scanner scanString:@"rgba(" intoString:nil]) {
+    NSLog(@"RGBA!");
+    
+    NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @",)"];
+    [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [scanner setCharactersToBeSkipped: skip];
+    
+    unsigned int r, g, b;
+    
+    [scanner scanInt: &r];
+    [scanner scanInt: &g];
+    [scanner scanInt: &b];
+    [scanner scanFloat: &alpha];
+    
+    // NSLog(@"Parsed: %d, %d, %d, %f", r, g, b, alpha);
+    
+    red   = r / 255.0;
+    green = g / 255.0;
+    blue  = b / 255.0;
   }
   
   return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
