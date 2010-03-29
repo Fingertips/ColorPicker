@@ -66,7 +66,6 @@
     [scanner setCharactersToBeSkipped: skip];
     
     unsigned int r, g, b;
-    
     [scanner scanInt: &r];
     [scanner scanInt: &g];
     [scanner scanInt: &b];
@@ -77,6 +76,22 @@
     red   = r / 255.0;
     green = g / 255.0;
     blue  = b / 255.0;
+    
+  } else if ([scanner scanString:@"hsl(" intoString:nil]) {
+    NSLog(@"HSL!");
+    
+    NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @"%,)"];
+    [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [scanner setCharactersToBeSkipped: skip];
+    
+    unsigned int hue, saturation, brightness;
+    [scanner scanInt: &hue];
+    [scanner scanInt: &saturation];
+    [scanner scanInt: &brightness];
+    
+    // NSLog(@"Parsed: %d, %d, %d", hue, saturation, brightness);
+    
+    return [NSColor colorWithCalibratedHue:(hue / 360.0) saturation:(saturation / 100.0) brightness:(brightness / 100.0) alpha:alpha];
   }
   
   return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
