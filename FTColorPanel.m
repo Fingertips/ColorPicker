@@ -27,6 +27,11 @@
     colorCodeField = [[NSTextField alloc] initWithFrame: NSMakeRect(8, contentBoxFrame.origin.y + 6, width, 20)];
     [colorCodeField setAutoresizingMask: NSViewWidthSizable|NSViewMaxYMargin];
     [colorCodeField setAlignment: NSCenterTextAlignment];
+    // make it look like a label as in IB
+    [colorCodeField setBezeled: NO];
+    [colorCodeField setDrawsBackground: NO];
+    [colorCodeField setEditable: NO];
+    [colorCodeField setSelectable: NO];
     [[self contentView] addSubview: colorCodeField];
     
     [self updateStringRepresentationOfColor];
