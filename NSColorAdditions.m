@@ -3,13 +3,12 @@
 // TODO: Do we need to use device or calibrated, or even make it a pref?
 @implementation NSColor (Additions)
 +(NSColor *)colorFromString:(NSString *)colorRepresentation {
-  float red, green, blue, alpha = 1.0;
-  
   NSScanner *scanner = [NSScanner scannerWithString: [colorRepresentation lowercaseString]];
-  [scanner scanCharactersFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] intoString:nil];
+  
+  float red = 1.0, green = 1.0, blue = 1.0, alpha = 1.0;
+  unsigned int r, g, b;
   
   if ([scanner scanString:@"#" intoString:nil]) {
-    unsigned int r, g, b;
     NSString *hex = @"000000";
     NSCharacterSet *hexChars = [NSCharacterSet characterSetWithCharactersInString: @"0123456789abcdef"];
     [scanner scanCharactersFromSet:hexChars intoString:&hex];
@@ -18,9 +17,9 @@
       [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 1)]] scanHexInt: &r];
       [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(1, 1)]] scanHexInt: &g];
       [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 1)]] scanHexInt: &b];
-      r = r + (r * 16);
-      g = g + (g * 16);
-      b = b + (b * 16);
+      r += r * 16;
+      g += g * 16;
+      b += b * 16;
     } else if ([hex length] == 6) {
       [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 2)]] scanHexInt: &r];
       [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 2)]] scanHexInt: &g];
@@ -29,25 +28,16 @@
       return nil;
     }
     
-    red   = r / 255.0;
-    green = g / 255.0;
-    blue  = b / 255.0;
-    
   } else {
     NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @"%,)"];
     [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [scanner setCharactersToBeSkipped: skip];
     
     if ([scanner scanString:@"rgb(" intoString:nil] || [scanner scanString:@"rgba(" intoString:nil]) {
-      unsigned int r, g, b;
       [scanner scanInt: &r];
       [scanner scanInt: &g];
       [scanner scanInt: &b];
       [scanner scanFloat: &alpha];
-      
-      red   = r / 255.0;
-      green = g / 255.0;
-      blue  = b / 255.0;
       
     } else if ([scanner scanString:@"hsl(" intoString:nil] || [scanner scanString:@"hsla(" intoString:nil]) {
       unsigned int hue, saturation, brightness;
@@ -62,6 +52,10 @@
       return nil;
     }
   }
+  
+  red   = r / 255.0;
+  green = g / 255.0;
+  blue  = b / 255.0;
   
   return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
 }
