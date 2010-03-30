@@ -9,7 +9,7 @@
       <title>Version 1.0 (8 bugs fixed; 2 new features)</title>
       <sparkle:releaseNotesLink>http://updates.colorpicker.fngtps.com/rnotes/1.0.html</sparkle:releaseNotesLink>
       <pubDate>Tue, 30 Mar 2010 16:53:11 +0000</pubDate>
-      <enclosure url="http://updates.colorpicker.fngtps.com/ColorPicker-1.0.zip" sparkle:version="1.0" length="575300" type="application/octet-stream" />
+      <enclosure url="http://updates.colorpicker.fngtps.com/ColorPicker-1.0.zip" sparkle:version="1.0" length="577262" type="application/octet-stream" sparkle:dsaSignature="MCwCFHVGCzhYOeqqBS4Q79tq66HNAYx6AhRPfHx/Wo918klGDg4lCeScyF6Vug==" />
    </item>
  </channel>
 </rss>
