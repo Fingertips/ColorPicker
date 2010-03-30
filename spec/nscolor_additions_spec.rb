@@ -116,13 +116,13 @@ describe "NSColor additions, to string" do
   end
   
   it "returns a Objective-C NSColor representation" do
-    color = NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 1)
-    color.toObjcNSColor(false).should == "[NSColor colorWithCalibratedRed:0.800000 green:0.700000 blue:0.600000 alpha:1.000000]"
+    color = NSColor.colorWithCalibratedRed(0.8, green: 0.76, blue: 0.654, alpha: 1)
+    color.toObjcNSColor(false).should == "[NSColor colorWithCalibratedRed:0.8 green:0.76 blue:0.654 alpha:1.0]"
   end
   
   it "returns a MacRuby NSColor representation" do
-    color = NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 1)
-    color.toMacRubyNSColor(false).should == "NSColor.colorWithCalibratedRed(0.8, green: 0.7, blue: 0.6, alpha: 1)"
+    color = NSColor.colorWithCalibratedRed(0.8, green: 0.76, blue: 0.654, alpha: 1)
+    color.toMacRubyNSColor(false).should == "NSColor.colorWithCalibratedRed(0.8, green: 0.76, blue: 0.654, alpha: 1)"
   end
   
   it "returns a short version of all representations" do

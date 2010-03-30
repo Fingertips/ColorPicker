@@ -140,16 +140,32 @@
   return result;
 }
 
+-(NSString *)_componentToString:(CGFloat)component {
+  if (component == 0.0) {
+    return @"0.0";
+  } else if (component == 1.0) {
+    return @"1.0";
+  } else {
+    return [NSString stringWithFormat: @"%g", component];
+  }
+}
+
 -(NSString *)toObjcNSColor:(BOOL)shortVersion {
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
-  NSString *result = [NSString stringWithFormat: (shortVersion ? @"%g %g %g %g" : @"[NSColor colorWithCalibratedRed:%f green:%f blue:%f alpha:%f]"),
-                       [color redComponent],
-                       [color greenComponent],
-                       [color blueComponent],
-                       [color alphaComponent]];
-  
-  return result;
+  if (shortVersion) {
+    return [NSString stringWithFormat: @"%g %g %g %g",
+                                       [color redComponent],
+                                       [color greenComponent],
+                                       [color blueComponent],
+                                       [color alphaComponent]];
+  } else {
+    NSString *red   = [self _componentToString: [color redComponent]];
+    NSString *green = [self _componentToString: [color greenComponent]];
+    NSString *blue  = [self _componentToString: [color blueComponent]];
+    NSString *alpha = [self _componentToString: [color alphaComponent]];
+    return [NSString stringWithFormat: @"[NSColor colorWithCalibratedRed:%@ green:%@ blue:%@ alpha:%@]", red, green, blue, alpha];
+  }
 }
 
 -(NSString *)toMacRubyNSColor:(BOOL)shortVersion {
