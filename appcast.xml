@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+ <channel>
+  <title>ColorPicker Changelog</title>
+  <link>http://updates.colorpicker.fngtps.com/appcast.xml</link>
+  <description>A simple standalone OS X color picker application.</description>
+  <language>en</language>
+   <item>
+      <title>Version 1.0 (8 bugs fixed; 2 new features)</title>
+      <sparkle:releaseNotesLink>http://updates.colorpicker.fngtps.com/rnotes/1.0.html</sparkle:releaseNotesLink>
+      <pubDate>Tue, 30 Mar 2010 16:53:11 +0000</pubDate>
+      <enclosure url="http://updates.colorpicker.fngtps.com/ColorPicker-1.0.zip" sparkle:version="1.0" length="575300" type="application/octet-stream" />
+   </item>
+ </channel>
+</rss>

@@ -29,6 +29,6 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
-	<string>http://fngtps.com/ColorPicker/appcast.xml</string>
+	<string>http://updates.colorpicker.fngtps.com/appcast.xml</string>
 </dict>
 </plist>
