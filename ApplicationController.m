@@ -7,8 +7,15 @@
   [panel makeKeyAndOrderFront: self];
 }
 
+-(BOOL)validateMenuItem:(NSMenuItem *)item {
+  if ([[[item menu] title] isEqualToString: COPY_AS_MENU]) {
+    [item setTitle: [panel representationStringOfColorInMode:[item tag] shortVersion:NO]];
+  }
+  return YES;
+}
+
 -(IBAction)copy:(id)sender {
-  NSArray *contents = [NSArray arrayWithObject: [panel representationStringOfColor: NO]];
+  NSArray *contents = [NSArray arrayWithObject: [panel representationStringOfCurrentColorMode: NO]];
   
   NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
   [pasteboard clearContents];

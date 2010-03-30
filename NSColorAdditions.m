@@ -169,8 +169,9 @@
 }
 
 -(NSString *)toMacRubyNSColor:(BOOL)shortVersion {
-  if (shortVersion)
+  if (shortVersion) {
     return [self toObjcNSColor: YES];
+  }
   
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
