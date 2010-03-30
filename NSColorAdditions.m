@@ -2,7 +2,7 @@
 
 @implementation NSColor (Additions)
 +(NSColor *)colorFromString:(NSString *)colorRepresentation {
-  float alpha = 1.0;
+  float alpha = 1;
   
   NSScanner *scanner = [NSScanner scannerWithString: [colorRepresentation lowercaseString]];
   NSMutableCharacterSet *skipChars = [NSMutableCharacterSet characterSetWithCharactersInString: @"%,"];
@@ -23,10 +23,12 @@
                                      alpha: alpha];
   }
   
-  int r = 0, g = 0, b = 0;
+  float red = 0, green = 0, blue = 0;
   
   if ([scanner scanString:@"#" intoString:nil]) {
+    unsigned int r = 0, g = 0, b = 0;
     NSString *hex = @"000000";
+    
     NSCharacterSet *hexChars = [NSCharacterSet characterSetWithCharactersInString: @"0123456789abcdef"];
     [scanner scanCharactersFromSet:hexChars intoString:&hex];
     
@@ -42,19 +44,22 @@
     } else {
       return nil;
     }
+    red = (r / 255.0); green = (g / 255.0); blue = (b / 255.0);
+    
   } else if ([scanner scanString:@"rgb(" intoString:nil] || [scanner scanString:@"rgba(" intoString:nil]) {
+    int r = 0, g = 0, b = 0;
+    
     [scanner scanInt: &r];
     [scanner scanInt: &g];
     [scanner scanInt: &b];
     [scanner scanFloat: &alpha];
+    
+    red = ((unsigned int)r / 255.0); green = ((unsigned int)g / 255.0); blue = ((unsigned int)b / 255.0);
   } else {
     return nil;
   }
   
-  return [NSColor colorWithCalibratedRed: (r / 255.0)
-                                   green: (g / 255.0)
-                                    blue: (b / 255.0)
-                                   alpha: alpha];
+  return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
 }
 
 -(NSString *)toHexString {

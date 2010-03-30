@@ -14,6 +14,8 @@
   int _colorMode;
 }
 
+-(FTColorPanel *)init;
+
 -(int)colorMode;
 -(void)setColorMode:(int)colorMode;
 

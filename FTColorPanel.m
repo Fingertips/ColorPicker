@@ -21,14 +21,13 @@
     // Make the 'content box', which holds the selected mode's content view,
     // a bit smaller to make place for the new divider and text field and move
     // it up by the same offset to locate it in the original position.
-    id *contentBox = [[[self contentView] subviews] objectAtIndex: CONTENT_BOX_INDEX];
+    id contentBox = [[[self contentView] subviews] objectAtIndex: CONTENT_BOX_INDEX];
     NSRect contentBoxFrame       = [contentBox frame];
     contentBoxFrame.origin.y    += CONTENT_BOX_OFFSET;
     contentBoxFrame.size.height -= CONTENT_BOX_OFFSET;
     [contentBox setFrame: contentBoxFrame];
     
     // Add a new divider under the opacity slider
-    NSBox *divider         = [[[self contentView] subviews] objectAtIndex: DIVIDER_INDEX];
     NSRect newDividerFrame = NSMakeRect(0, contentBoxFrame.origin.y - (SPACING - 1), totalWidth, 1);
     NSBox *newDivider      = [[NSBox alloc] initWithFrame: newDividerFrame];
     [newDivider setBoxType: NSBoxSeparator];
@@ -84,6 +83,8 @@
     case OBJC_NSCOLOR_COLOR_MODE:    return [color toObjcNSColor:    shortVersion];
     case MACRUBY_NSCOLOR_COLOR_MODE: return [color toMacRubyNSColor: shortVersion];
   }
+  
+  return nil;
 }
 
 -(void)updateStringRepresentationOfColor {

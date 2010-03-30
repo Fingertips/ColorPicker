@@ -2,7 +2,7 @@
 
 @implementation ApplicationController
 -(void)awakeFromNib {
-  panel = [FTColorPanel sharedColorPanel];
+  panel = [[FTColorPanel alloc] init];
   [panel setDelegate: self];
   [panel makeKeyAndOrderFront: self];
 }
@@ -29,7 +29,7 @@
   NSArray *copiedStrings = [[NSPasteboard generalPasteboard] readObjectsForClasses:classes options:nil];
   
   if (copiedStrings && [copiedStrings count] > 0) {
-    NSColor *color = [NSColor colorFromString: [copiedStrings firstObject]];
+    NSColor *color = [NSColor colorFromString: [copiedStrings objectAtIndex: 0]];
     if (color) {
       [panel setColor: color];
       return;
