@@ -175,10 +175,10 @@
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
   NSString *result = [NSString stringWithFormat: @"NSColor.colorWithCalibratedRed(%g, green: %g, blue: %g, alpha: %g)",
-                       [color redComponent],
-                       [color greenComponent],
-                       [color blueComponent],
-                       [color alphaComponent]];
+                                                 [color redComponent],
+                                                 [color greenComponent],
+                                                 [color blueComponent],
+                                                 [color alphaComponent]];
   
   return result;
 }
