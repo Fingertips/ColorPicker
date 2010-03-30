@@ -46,7 +46,7 @@
     [colorCodeField setBezeled: NO];
     [colorCodeField setDrawsBackground: NO];
     [colorCodeField setEditable: NO];
-    [colorCodeField setSelectable: NO];
+    [colorCodeField setSelectable: YES];
     [colorCodeField setAutoresizingMask: NSViewWidthSizable | NSViewMaxYMargin];
     [[self contentView] addSubview: colorCodeField];
     
