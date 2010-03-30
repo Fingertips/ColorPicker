@@ -47,7 +47,7 @@
     red = (r / 255.0); green = (g / 255.0); blue = (b / 255.0);
     
   } else if ([scanner scanString:@"rgb(" intoString:nil] || [scanner scanString:@"rgba(" intoString:nil]) {
-    int r = 0, g = 0, b = 0;
+    signed int r = 0, g = 0, b = 0;
     
     [scanner scanInt: &r];
     [scanner scanInt: &g];
@@ -56,9 +56,9 @@
     
     red = ((unsigned int)r / 255.0); green = ((unsigned int)g / 255.0); blue = ((unsigned int)b / 255.0);
     
-  } else if ([scanner scanString:@"[NSColor" intoString:nil]) {
-    NSLog(@"OBJC!");
-    [scanner scanString:@"colorWithCalibratedRed:" intoString:nil];
+  } else if ([scanner scanString:@"[NSColor" intoString:nil] || [scanner scanString:@"NSColor." intoString:nil]) {
+    // objective-c or macruby NSColor
+    [scanner scanString:@"colorWithCalibratedRed:" intoString:nil] || [scanner scanString:@"colorWithCalibratedRed(" intoString:nil];
     [scanner scanFloat: &red];
     [scanner scanString:@"green:" intoString:nil];
     [scanner scanFloat: &green];
