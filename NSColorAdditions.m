@@ -55,6 +55,18 @@
     [scanner scanFloat: &alpha];
     
     red = ((unsigned int)r / 255.0); green = ((unsigned int)g / 255.0); blue = ((unsigned int)b / 255.0);
+    
+  } else if ([scanner scanString:@"[NSColor" intoString:nil]) {
+    NSLog(@"OBJC!");
+    [scanner scanString:@"colorWithCalibratedRed:" intoString:nil];
+    [scanner scanFloat: &red];
+    [scanner scanString:@"green:" intoString:nil];
+    [scanner scanFloat: &green];
+    [scanner scanString:@"blue:" intoString:nil];
+    [scanner scanFloat: &blue];
+    [scanner scanString:@"alpha:" intoString:nil];
+    [scanner scanFloat: &alpha];
+    
   } else {
     return nil;
   }
