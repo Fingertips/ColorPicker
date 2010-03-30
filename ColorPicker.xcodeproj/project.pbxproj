@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		256AC3DA0F4B6AC300CF3369 /* ColorPickerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* ColorPickerAppDelegate.m */; };
 		51286DF1115CC2A60088BF7A /* NSColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 51286DF0115CC2A60088BF7A /* NSColorAdditions.m */; };
 		51286E18115CD64D0088BF7A /* NSColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 51286DF0115CC2A60088BF7A /* NSColorAdditions.m */; };
 		51286E19115CD6580088BF7A /* NSColorAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 51286DEF115CC2A60088BF7A /* NSColorAdditions.h */; };
@@ -25,8 +24,6 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		256AC3D80F4B6AC300CF3369 /* ColorPickerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerAppDelegate.h; sourceTree = "<group>"; };
-		256AC3D90F4B6AC300CF3369 /* ColorPickerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerAppDelegate.m; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* ColorPicker_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPicker_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -66,9 +63,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				256AC3D80F4B6AC300CF3369 /* ColorPickerAppDelegate.h */,
 				51754D79111990010074BCBD /* HexColorPicker.colorPicker */,
-				256AC3D90F4B6AC300CF3369 /* ColorPickerAppDelegate.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -296,7 +291,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				256AC3DA0F4B6AC300CF3369 /* ColorPickerAppDelegate.m in Sources */,
 				51754D23111980180074BCBD /* ApplicationController.m in Sources */,
 				51286DF1115CC2A60088BF7A /* NSColorAdditions.m in Sources */,
 				51286F68115D1FE80088BF7A /* FTColorPanel.m in Sources */,
