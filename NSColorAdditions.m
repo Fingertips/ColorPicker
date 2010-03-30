@@ -1,12 +1,29 @@
 #import "NSColorAdditions.h"
 
-// TODO: Do we need to use device or calibrated, or even make it a pref?
 @implementation NSColor (Additions)
 +(NSColor *)colorFromString:(NSString *)colorRepresentation {
-  NSScanner *scanner = [NSScanner scannerWithString: [colorRepresentation lowercaseString]];
+  float alpha = 1.0;
   
-  float red = 1.0, green = 1.0, blue = 1.0, alpha = 1.0;
-  unsigned int r, g, b;
+  NSScanner *scanner = [NSScanner scannerWithString: [colorRepresentation lowercaseString]];
+  NSMutableCharacterSet *skipChars = [NSMutableCharacterSet characterSetWithCharactersInString: @"%,"];
+  [skipChars formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  [scanner setCharactersToBeSkipped: skipChars];
+  
+  if ([scanner scanString:@"hsl(" intoString:nil] || [scanner scanString:@"hsla(" intoString:nil]) {
+    int hue = 0, saturation = 0, brightness = 0;
+    
+    [scanner scanInt: &hue];
+    [scanner scanInt: &saturation];
+    [scanner scanInt: &brightness];
+    [scanner scanFloat: &alpha];
+    
+    return [NSColor colorWithCalibratedHue: (hue / 360.0)
+                                saturation: (saturation / 100.0)
+                                brightness: (brightness / 100.0)
+                                     alpha: alpha];
+  }
+  
+  int r = 0, g = 0, b = 0;
   
   if ([scanner scanString:@"#" intoString:nil]) {
     NSString *hex = @"000000";
@@ -17,9 +34,7 @@
       [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 1)]] scanHexInt: &r];
       [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(1, 1)]] scanHexInt: &g];
       [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 1)]] scanHexInt: &b];
-      r += r * 16;
-      g += g * 16;
-      b += b * 16;
+      r += r * 16; g += g * 16; b += b * 16;
     } else if ([hex length] == 6) {
       [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 2)]] scanHexInt: &r];
       [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 2)]] scanHexInt: &g];
@@ -27,37 +42,19 @@
     } else {
       return nil;
     }
-    
+  } else if ([scanner scanString:@"rgb(" intoString:nil] || [scanner scanString:@"rgba(" intoString:nil]) {
+    [scanner scanInt: &r];
+    [scanner scanInt: &g];
+    [scanner scanInt: &b];
+    [scanner scanFloat: &alpha];
   } else {
-    NSMutableCharacterSet *skip = [NSMutableCharacterSet characterSetWithCharactersInString: @"%,)"];
-    [skip formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [scanner setCharactersToBeSkipped: skip];
-    
-    if ([scanner scanString:@"rgb(" intoString:nil] || [scanner scanString:@"rgba(" intoString:nil]) {
-      [scanner scanInt: &r];
-      [scanner scanInt: &g];
-      [scanner scanInt: &b];
-      [scanner scanFloat: &alpha];
-      
-    } else if ([scanner scanString:@"hsl(" intoString:nil] || [scanner scanString:@"hsla(" intoString:nil]) {
-      unsigned int hue, saturation, brightness;
-      [scanner scanInt: &hue];
-      [scanner scanInt: &saturation];
-      [scanner scanInt: &brightness];
-      [scanner scanFloat: &alpha];
-      
-      return [NSColor colorWithCalibratedHue:(hue / 360.0) saturation:(saturation / 100.0) brightness:(brightness / 100.0) alpha:alpha];
-      
-    } else {
-      return nil;
-    }
+    return nil;
   }
   
-  red   = r / 255.0;
-  green = g / 255.0;
-  blue  = b / 255.0;
-  
-  return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
+  return [NSColor colorWithCalibratedRed: (r / 255.0)
+                                   green: (g / 255.0)
+                                    blue: (b / 255.0)
+                                   alpha: alpha];
 }
 
 -(NSString *)toHexString {
