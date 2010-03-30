@@ -25,7 +25,15 @@
 }
 
 -(IBAction)paste:(id)sender {
-  NSLog(@"paste");
+  NSArray *classes = [NSArray arrayWithObject: [NSString class]];
+  NSArray *copiedStrings = [[NSPasteboard generalPasteboard] readObjectsForClasses:classes options:nil];
+  if (copiedStrings) {
+    NSString *colorRepresentation = [copiedStrings firstObject];
+    NSColor *color = [NSColor colorFromString: colorRepresentation];
+    if (color) {
+      [panel setColor: color];
+    }
+  }
 }
 
 -(void)windowWillClose:(NSNotification *)aNotification {
