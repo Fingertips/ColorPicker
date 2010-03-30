@@ -27,13 +27,16 @@
 -(IBAction)paste:(id)sender {
   NSArray *classes = [NSArray arrayWithObject: [NSString class]];
   NSArray *copiedStrings = [[NSPasteboard generalPasteboard] readObjectsForClasses:classes options:nil];
-  if (copiedStrings) {
-    NSString *colorRepresentation = [copiedStrings firstObject];
-    NSColor *color = [NSColor colorFromString: colorRepresentation];
+  
+  if (copiedStrings && [copiedStrings count] > 0) {
+    NSColor *color = [NSColor colorFromString: [copiedStrings firstObject]];
     if (color) {
       [panel setColor: color];
+      return;
     }
   }
+  
+  NSBeep();
 }
 
 -(void)windowWillClose:(NSNotification *)aNotification {
