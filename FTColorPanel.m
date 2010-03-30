@@ -12,7 +12,8 @@
     _colorMode = HEX_COLOR_MODE;
     
     [self setStyleMask: NSTitledWindowMask|NSClosableWindowMask|NSMiniaturizableWindowMask|NSResizableWindowMask];
-    [self setFloatingPanel: YES];
+    [self setHidesOnDeactivate: NO];
+    [self setFloatingPanel: NO];
     [self setShowsAlpha: YES];
     
     float totalWidth = [[self contentView] frame].size.width;
