@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Spinner</title>
+<script src="raphael.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+window.onload = function () {
+  // var remove = spinner("holder", 8, 14, 12, 2.5, "#1b191b");
+  var remove = spinner("holder", 24, 42, 12, 7.5, "#444", 50000);
+};
+
+function spinner(holderid, R1, R2, count, stroke_width, colour, delay) {
+  var sectorsCount = count || 12,
+    color = colour || "#fff",
+    width = stroke_width || 15,
+    r1 = Math.min(R1, R2) || 35,
+    r2 = Math.max(R1, R2) || 60,
+    cx = r2 + width,
+    cy = r2 + width,
+    r = Raphael(holderid, r2 * 2 + width * 2, r2 * 2 + width * 2),
+    
+    sectors = [],
+    opacity = [],
+    beta = 2 * Math.PI / sectorsCount,
+
+    pathParams = {stroke: color, "stroke-width": width, "stroke-linecap": "round"};
+    Raphael.getColor.reset();
+  for (var i = 0; i < sectorsCount; i++) {
+    var alpha = beta * i - Math.PI / 2,
+      cos = Math.cos(alpha),
+      sin = Math.sin(alpha);
+    opacity[i] = 1 / sectorsCount * i;
+    sectors[i] = r.path([["M", cx + r1 * cos, cy + r1 * sin], ["L", cx + r2 * cos, cy + r2 * sin]]).attr(pathParams);
+    if (color == "rainbow") {
+        sectors[i].attr("stroke", Raphael.getColor());
+    }
+  }
+  var tick;
+  (function ticker() {
+    opacity.unshift(opacity.pop());
+    for (var i = 0; i < sectorsCount; i++) {
+      sectors[i].attr("opacity", opacity[i]);
+    }
+    r.safari();
+      tick = setTimeout(ticker, delay / sectorsCount);
+  })();
+  return function () {
+    clearTimeout(tick);
+    r.remove();
+  };
+}
+</script>
+<style type="text/css" media="screen">
+body {
+  background-color: #000;
+/*  background-color: #fff;*/
+  height: 100%;
+}
+#holder {
+  height: 300px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 300px;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+<div id="holder"></div>
+</div>
+</body>
+</html>
