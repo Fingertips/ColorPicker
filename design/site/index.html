@@ -87,15 +87,18 @@ if (/Apple.*Mobile/.test(navigator.userAgent)) {
 <script src="javascripts/s2.js"></script>
 <script>
   $('light').setStyle('topacity: 0');
-  $('light').morph('opacity: 1', {duration: 1, transition: 'easeOutQuad', delay: .5});
+  $('light').morph('opacity: 1', {duration: 0.6, transition: 'easeOutQuad'});
+  
+  $('table').setStyle('topacity: 0');
+  $('table').morph('opacity: 1', {duration: 0.5, transition: 'easeOutQuad', delay: 0.2});
   
   $('glow').setStyle('top: -640px');
   $('ball').setStyle('top: -512px');
   $('shadow').setStyle('top: 608px; width: 16px; height: 8px; margin-left: -8px; opacity: 0');
   
-  $('glow').morph('top: 0', {duration: 1.5, transition: 'easeOutBounce', delay: .01});
-  $('ball').morph('top: 128px', {duration: 1.5, transition: 'easeOutBounce'});
-  $('shadow').morph('top: 560px; width: 512px; height: 80px; margin-left: -256px; opacity: 1', {duration: 1.5, transition: 'easeOutBounce'});
+  $('glow').morph('top: 0', {duration: 1.5, transition: 'easeOutBounce', delay: 1.01});
+  $('ball').morph('top: 128px', {duration: 1.5, transition: 'easeOutBounce', delay: 1});
+  $('shadow').morph('top: 560px; width: 512px; height: 80px; margin-left: -256px; opacity: 1', {duration: 1.5, transition: 'easeOutBounce', delay: 1});
   
   // $('glow').setStyle('top: -704px');
   // $('ball').setStyle('top: -576px');
