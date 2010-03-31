@@ -1,0 +1,109 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width = 1024px; user-scalable = yes">
+<title>ColorPicker</title>
+<style>
+body
+{
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+/*  background-color: #fff;*/
+}
+#main
+{
+  position: relative;
+}
+#table
+{
+  position: relative;
+  top: 512px;
+/*  top: 448px;*/
+  width: 100%;
+  height: 768px;
+  border-top: 1px solid #000;
+  background: #000 url(images/table.png) 50% top repeat-x;
+/*  background: #000 url(images/table.jpg) 50% top repeat-x;*/
+}
+#light
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1024px;
+  background: url(images/light.png) 50% top no-repeat;
+/*  outline: 1px dotted red;*/
+}
+#ball, #shadow, #glow
+{
+  position: absolute;
+  left: 50%;
+/*  outline: 1px dotted red;*/
+}
+#ball
+{
+  top: 128px;
+/*  top: 64px;*/
+  width: 512px;
+  height: 512px;
+  margin-left: -256px;
+  background: url(images/ball.png);
+}
+#glow
+{
+  top: 0;
+/*  top: -64px;*/
+  width: 768px;
+  height: 768px;
+  margin-left: -384px;
+  background: url(images/glow.png);
+}
+#shadow
+{
+  top: 560px;
+/*  top: 496px;*/
+  width: 512px;
+  height: 80px;
+  margin-left: -256px;
+}
+</style>
+</head>
+<body>
+<script>
+if (/Apple.*Mobile/.test(navigator.userAgent)) {
+  document.body.className = 'mobile';
+}
+</script>
+<div id="main">
+<div id="light"></div>
+<div id="table"></div>
+<div id="glow"></div>
+<img id="shadow" src="images/shadow.png">
+<div id="ball"></div>
+</div>
+<script src="javascripts/prototype.js"></script>
+<script src="javascripts/s2.js"></script>
+<script>
+  $('light').setStyle('topacity: 0');
+  $('light').morph('opacity: 1', {duration: 1, transition: 'easeOutQuad', delay: .5});
+  
+  $('glow').setStyle('top: -640px');
+  $('ball').setStyle('top: -512px');
+  $('shadow').setStyle('top: 608px; width: 16px; height: 8px; margin-left: -8px; opacity: 0');
+  
+  $('glow').morph('top: 0', {duration: 1.5, transition: 'easeOutBounce', delay: .01});
+  $('ball').morph('top: 128px', {duration: 1.5, transition: 'easeOutBounce'});
+  $('shadow').morph('top: 560px; width: 512px; height: 80px; margin-left: -256px; opacity: 1', {duration: 1.5, transition: 'easeOutBounce'});
+  
+  // $('glow').setStyle('top: -704px');
+  // $('ball').setStyle('top: -576px');
+  // $('shadow').setStyle('top: 544px; width: 16px; height: 8px; margin-left: -8px; opacity: 0');
+  // 
+  // $('glow').morph('top: -64px', {duration: 1.5, transition: 'easeOutBounce', delay: .01});
+  // $('ball').morph('top: 64px', {duration: 1.5, transition: 'easeOutBounce'});
+  // $('shadow').morph('top: 496px; width: 512px; height: 80px; margin-left: -256px; opacity: 1', {duration: 1.5, transition: 'easeOutBounce'});
+</script>
+</body>
+</html>
