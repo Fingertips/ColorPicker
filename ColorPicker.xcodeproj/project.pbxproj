@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		51074369116242F30077356E /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51074368116242F30077356E /* Sparkle.framework */; };
-		51074376116243720077356E /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 51074368116242F30077356E /* Sparkle.framework */; };
-		5107438311624BC80077356E /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 5107438211624BC80077356E /* dsa_pub.pem */; };
 		51286DF1115CC2A60088BF7A /* NSColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 51286DF0115CC2A60088BF7A /* NSColorAdditions.m */; };
 		51286E18115CD64D0088BF7A /* NSColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 51286DF0115CC2A60088BF7A /* NSColorAdditions.m */; };
 		51286E19115CD6580088BF7A /* NSColorAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 51286DEF115CC2A60088BF7A /* NSColorAdditions.h */; };
@@ -29,7 +26,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				51074376116243720077356E /* Sparkle.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,8 +41,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		51074368116242F30077356E /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = /Library/Frameworks/Sparkle.framework; sourceTree = "<absolute>"; };
-		5107438211624BC80077356E /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = update/dsa_pub.pem; sourceTree = "<group>"; };
 		51286DEF115CC2A60088BF7A /* NSColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColorAdditions.h; sourceTree = "<group>"; };
 		51286DF0115CC2A60088BF7A /* NSColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSColorAdditions.m; sourceTree = "<group>"; };
 		51286E12115CD61E0088BF7A /* ColorPickerClasses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorPickerClasses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +51,7 @@
 		51754D22111980180074BCBD /* ApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationController.m; sourceTree = "<group>"; };
 		7622A04F111C29F600C7013E /* ColorPicker.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ColorPicker.icns; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* ColorPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* Picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Picker.app; path = /Users/manfred/Code/ColorPicker/build/Release/Picker.app; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +67,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				51074369116242F30077356E /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +84,6 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				51074368116242F30077356E /* Sparkle.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -110,7 +102,6 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* ColorPicker.app */,
 				51286E12115CD61E0088BF7A /* ColorPickerClasses.framework */,
 			);
 			name = Products;
@@ -146,7 +137,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5107438211624BC80077356E /* dsa_pub.pem */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -244,7 +234,7 @@
 			name = ColorPicker;
 			productInstallPath = "$(HOME)/Applications";
 			productName = ColorPicker;
-			productReference = 8D1107320486CEB800E47090 /* ColorPicker.app */;
+			productReference = 8D1107320486CEB800E47090 /* Picker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -254,6 +244,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ColorPicker" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -295,7 +286,6 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				7622A050111C29F600C7013E /* ColorPicker.icns in Resources */,
-				5107438311624BC80077356E /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +406,7 @@
 				GCC_PREFIX_HEADER = ColorPicker_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = ColorPicker;
+				PRODUCT_NAME = "Persistent Color Picker";
 			};
 			name = Debug;
 		};
@@ -430,7 +420,7 @@
 				GCC_PREFIX_HEADER = ColorPicker_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = ColorPicker;
+				PRODUCT_NAME = "Persistent Color Picker";
 			};
 			name = Release;
 		};
