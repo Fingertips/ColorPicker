@@ -66,7 +66,17 @@
     [scanner scanFloat: &blue];
     [scanner scanString:@"alpha:" intoString:nil];
     [scanner scanFloat: &alpha];
-    
+
+  } else if ([scanner scanString:@"[UIColor" intoString:nil]) {
+    [scanner scanString:@"colorWithRed:" intoString:nil];
+    [scanner scanFloat: &red];
+    [scanner scanString:@"green:" intoString:nil];
+    [scanner scanFloat: &green];
+    [scanner scanString:@"blue:" intoString:nil];
+    [scanner scanFloat: &blue];
+    [scanner scanString:@"alpha:" intoString:nil];
+    [scanner scanFloat: &alpha];
+
   } else {
     return nil;
   }

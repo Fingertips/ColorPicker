@@ -67,6 +67,12 @@ describe "NSColor additions, from a string, with mixed upper and lowercase chara
     NSColor.colorFromString("\tNSColor.colorWithCalibratedRed(0.8100,\n\t\tgreen:0.72,\n\t\tblue:  0.630000,\n\t\talpha:1)\n").should equal_color(@opaqueColor)
     NSColor.colorFromString("NSColor.colorWithCalibratedRed(0.8100, green:\t0.72, blue:  0.630000, alpha:0.540000)").should equal_color(@transparentColor)
   end
+
+  it "parses an Objective-C UIColor representation" do
+    NSColor.colorFromString("\t[UIColor colorWithRed:0.808\n\t\tgreen:0.718\n\t\tblue:0.627\n\t\talpha:1]\n").should equal_color(@opaqueColor)
+    NSColor.colorFromString("[UIColor colorWithRed:0.8100 green:\t0.72 blue:  0.630000 alpha:0.540000]").should equal_color(@transparentColor)
+  end
+  
 end
 
 describe "NSColor additions, to string" do
