@@ -25,28 +25,7 @@
   
   float red = 0, green = 0, blue = 0;
   
-  if ([scanner scanString:@"#" intoString:nil]) {
-    unsigned int r = 0, g = 0, b = 0;
-    NSString *hex = @"000000";
-    
-    NSCharacterSet *hexChars = [NSCharacterSet characterSetWithCharactersInString: @"0123456789abcdef"];
-    [scanner scanCharactersFromSet:hexChars intoString:&hex];
-    
-    if ([hex length] == 3) {
-      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 1)]] scanHexInt: &r];
-      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(1, 1)]] scanHexInt: &g];
-      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 1)]] scanHexInt: &b];
-      r += r * 16; g += g * 16; b += b * 16;
-    } else if ([hex length] == 6) {
-      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 2)]] scanHexInt: &r];
-      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 2)]] scanHexInt: &g];
-      [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(4, 2)]] scanHexInt: &b];
-    } else {
-      return nil;
-    }
-    red = (r / 255.0); green = (g / 255.0); blue = (b / 255.0);
-    
-  } else if ([scanner scanString:@"rgb(" intoString:nil] || [scanner scanString:@"rgba(" intoString:nil]) {
+  if ([scanner scanString:@"rgb(" intoString:nil] || [scanner scanString:@"rgba(" intoString:nil]) {
     signed int r = 0, g = 0, b = 0;
     
     [scanner scanInt: &r];
@@ -78,7 +57,33 @@
     [scanner scanFloat: &alpha];
 
   } else {
-    return nil;
+    [scanner scanString:@"#" intoString:nil];
+
+    unsigned int r = 0, g = 0, b = 0;
+    NSString *hex = @"000000";
+
+    NSCharacterSet *hexChars = [NSCharacterSet characterSetWithCharactersInString: @"0123456789abcdef"];
+
+    if([scanner scanCharactersFromSet:hexChars intoString:&hex]){
+
+      if ([hex length] == 3) {
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 1)]] scanHexInt: &r];
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(1, 1)]] scanHexInt: &g];
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 1)]] scanHexInt: &b];
+        r += r * 16; g += g * 16; b += b * 16;
+      } else if ([hex length] == 6) {
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(0, 2)]] scanHexInt: &r];
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(2, 2)]] scanHexInt: &g];
+        [[NSScanner scannerWithString: [hex substringWithRange: NSMakeRange(4, 2)]] scanHexInt: &b];
+      } else {
+        return nil;
+      }
+
+      red = (r / 255.0); green = (g / 255.0); blue = (b / 255.0);
+
+    } else {
+      return nil;
+    }
   }
   
   return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];

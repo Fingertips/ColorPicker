@@ -37,6 +37,16 @@ describe "NSColor additions, from a string, with mixed upper and lowercase chara
     NSColor.colorFromString("#ceB7a0").should equal_color(@opaqueColor)
     NSColor.colorFromString("\t#ceB7a0\n").should equal_color(@opaqueColor)
   end
+
+  it "parses a hex3 representation without the leading hash sign" do
+    NSColor.colorFromString("f0F").should == NSColor.magentaColor
+    NSColor.colorFromString("\tF0f\n").should == NSColor.magentaColor
+  end
+  
+  it "parses a hex6 representation without the leading hash sign" do
+    NSColor.colorFromString("ceB7a0").should equal_color(@opaqueColor)
+    NSColor.colorFromString("\tceB7a0\n").should equal_color(@opaqueColor)
+  end
   
   it "parses a RGB representation" do
     NSColor.colorFromString("\trgb(206,183, 160)").should equal_color(@opaqueColor)
