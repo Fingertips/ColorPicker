@@ -79,13 +79,15 @@
   NSColor *color = [self color];
   
   switch (colorMode) {
-    case HEX_COLOR_MODE:             return [color toHexString];
-    case RGB_COLOR_MODE:             return [color toRGBString:      shortVersion];
-    case RGBA_COLOR_MODE:            return [color toRGBAString:     shortVersion];
-    case HSL_COLOR_MODE:             return [color toHSLString:      shortVersion];
-    case HSLA_COLOR_MODE:            return [color toHSLAString:     shortVersion];
-    case OBJC_NSCOLOR_COLOR_MODE:    return [color toObjcNSColor:    shortVersion];
-    case MACRUBY_NSCOLOR_COLOR_MODE: return [color toMacRubyNSColor: shortVersion];
+    case HEX_COLOR_MODE:              return [color toHexString];
+    case HEX_WITHOUT_HASH_COLOR_MODE: return [color toHexStringWithoutHash];
+    case RGB_COLOR_MODE:              return [color toRGBString:      shortVersion];
+    case RGBA_COLOR_MODE:             return [color toRGBAString:     shortVersion];
+    case HSL_COLOR_MODE:              return [color toHSLString:      shortVersion];
+    case HSLA_COLOR_MODE:             return [color toHSLAString:     shortVersion];
+    case OBJC_NSCOLOR_COLOR_MODE:     return [color toObjcNSColor:    shortVersion];
+    case MACRUBY_NSCOLOR_COLOR_MODE:  return [color toMacRubyNSColor: shortVersion];
+    case OBJC_UICOLOR_COLOR_MODE:     return [color toObjcUIColor:    shortVersion];
   }
   
   return nil;

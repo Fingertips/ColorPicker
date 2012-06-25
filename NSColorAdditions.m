@@ -75,23 +75,27 @@
 }
 
 -(NSString *)toHexString {
-  NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
-  
-  NSString *result = [NSString stringWithFormat: @"#%02x%02x%02x",
-                       (unsigned int)(255 * [color redComponent]),
-                       (unsigned int)(255 * [color greenComponent]),
-                       (unsigned int)(255 * [color blueComponent])];
-  
-  if (([result characterAtIndex: 1] == [result characterAtIndex: 2]) &&
-      ([result characterAtIndex: 3] == [result characterAtIndex: 4]) &&
-        ([result characterAtIndex: 5] == [result characterAtIndex: 6])) {
-    return [NSString stringWithFormat: @"#%C%C%C",
-             [result characterAtIndex: 1],
-             [result characterAtIndex: 3],
-             [result characterAtIndex: 5]];
-  } else {
-    return result;
-  }
+    return [NSString stringWithFormat:@"#%@", [self toHexStringWithoutHash]];
+}
+
+-(NSString *)toHexStringWithoutHash {
+    NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+    
+    NSString *result = [NSString stringWithFormat: @"%02x%02x%02x",
+                        (unsigned int)(255 * [color redComponent]),
+                        (unsigned int)(255 * [color greenComponent]),
+                        (unsigned int)(255 * [color blueComponent])];
+    
+    if (([result characterAtIndex: 0] == [result characterAtIndex: 1]) &&
+        ([result characterAtIndex: 2] == [result characterAtIndex: 3]) &&
+        ([result characterAtIndex: 4] == [result characterAtIndex: 5])) {
+        return [NSString stringWithFormat: @"%C%C%C",
+                [result characterAtIndex: 0],
+                [result characterAtIndex: 2],
+                [result characterAtIndex: 4]];
+    } else {
+        return result;
+    }  
 }
 
 -(NSString *)toRGBString:(BOOL)shortVersion {
@@ -182,6 +186,20 @@
                                                  [color alphaComponent]];
   
   return result;
+}
+
+-(NSString *)toObjcUIColor:(BOOL)shortVersion {
+    NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+    
+    if (shortVersion) {
+        return [self toObjcNSColor: YES];
+    } else {
+        NSString *red   = [self _componentToString: [color redComponent]];
+        NSString *green = [self _componentToString: [color greenComponent]];
+        NSString *blue  = [self _componentToString: [color blueComponent]];
+        NSString *alpha = [self _componentToString: [color alphaComponent]];
+        return [NSString stringWithFormat: @"[UIColor colorWithRed:%@ green:%@ blue:%@ alpha:%@]", red, green, blue, alpha];
+    }
 }
 
 @end

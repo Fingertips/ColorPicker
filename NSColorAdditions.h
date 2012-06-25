@@ -11,6 +11,7 @@
 // This, however, can not be compacted:
 //   "#cbb298" => "#cbb298"
 -(NSString *)toHexString;
+-(NSString *)toHexStringWithoutHash;
 
 -(NSString *)toRGBString:(BOOL)shortVersion;
 -(NSString *)toRGBAString:(BOOL)shortVersion;
@@ -20,4 +21,6 @@
 
 -(NSString *)toObjcNSColor:(BOOL)shortVersion;
 -(NSString *)toMacRubyNSColor:(BOOL)shortVersion;
+
+-(NSString *)toObjcUIColor:(BOOL)shortVersion;
 @end
