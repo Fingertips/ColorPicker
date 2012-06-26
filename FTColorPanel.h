@@ -10,6 +10,7 @@
 #define OBJC_NSCOLOR_COLOR_MODE 6
 #define MACRUBY_NSCOLOR_COLOR_MODE 7
 #define OBJC_UICOLOR_COLOR_MODE 8
+#define MOTION_UICOLOR_COLOR_MODE 9
 
 @interface FTColorPanel : NSColorPanel {
   NSTextField *colorCodeField;

@@ -23,4 +23,5 @@
 -(NSString *)toMacRubyNSColor:(BOOL)shortVersion;
 
 -(NSString *)toObjcUIColor:(BOOL)shortVersion;
+-(NSString *)toMotionUIColor:(BOOL)shortVersion;
 @end

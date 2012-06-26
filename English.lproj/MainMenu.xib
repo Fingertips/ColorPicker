@@ -270,6 +270,15 @@
 												<reference key="NSMixedImage" ref="502551668"/>
 												<int key="NSTag">8</int>
 											</object>
+											<object class="NSMenuItem" id="107874052">
+												<reference key="NSMenu" ref="454462147"/>
+												<string key="NSTitle">UIColor.colorWithRed(1, green:0, blue:0, alpha:1)</string>
+												<string key="NSKeyEquiv"/>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="35465992"/>
+												<reference key="NSMixedImage" ref="502551668"/>
+												<int key="NSTag">9</int>
+											</object>
 										</object>
 									</object>
 								</object>
@@ -538,6 +547,14 @@
 					</object>
 					<int key="connectionID">574</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">copyAs:</string>
+						<reference key="source" ref="212914437"/>
+						<reference key="destination" ref="107874052"/>
+					</object>
+					<int key="connectionID">576</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -782,6 +799,7 @@
 							<reference ref="282190972"/>
 							<reference ref="869050022"/>
 							<reference ref="787447770"/>
+							<reference ref="107874052"/>
 						</object>
 						<reference key="parent" ref="182596390"/>
 					</object>
@@ -835,6 +853,11 @@
 						<reference key="object" ref="787447770"/>
 						<reference key="parent" ref="454462147"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">575</int>
+						<reference key="object" ref="107874052"/>
+						<reference key="parent" ref="454462147"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -882,6 +905,8 @@
 					<string>570.IBAttributePlaceholdersKey</string>
 					<string>570.IBPluginDependency</string>
 					<string>573.IBPluginDependency</string>
+					<string>575.IBAttributePlaceholdersKey</string>
+					<string>575.IBPluginDependency</string>
 					<string>58.IBPluginDependency</string>
 					<string>92.IBPluginDependency</string>
 				</object>
@@ -932,6 +957,12 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSMutableDictionary">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<reference key="dict.sortedKeys" ref="0"/>
+						<reference key="dict.values" ref="0"/>
+					</object>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
@@ -948,7 +979,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">574</int>
+			<int key="maxID">576</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

@@ -88,6 +88,7 @@
     case OBJC_NSCOLOR_COLOR_MODE:     return [color toObjcNSColor:    shortVersion];
     case MACRUBY_NSCOLOR_COLOR_MODE:  return [color toMacRubyNSColor: shortVersion];
     case OBJC_UICOLOR_COLOR_MODE:     return [color toObjcUIColor:    shortVersion];
+    case MOTION_UICOLOR_COLOR_MODE:   return [color toMotionUIColor:  shortVersion];
   }
   
   return nil;

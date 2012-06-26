@@ -46,8 +46,8 @@
     [scanner scanString:@"alpha:" intoString:nil];
     [scanner scanFloat: &alpha];
 
-  } else if ([scanner scanString:@"[UIColor" intoString:nil]) {
-    [scanner scanString:@"colorWithRed:" intoString:nil];
+  } else if ([scanner scanString:@"[UIColor" intoString:nil] || [scanner scanString:@"UIColor." intoString:nil]) {
+    [scanner scanString:@"colorWithRed:" intoString:nil] || [scanner scanString:@"colorWithRed(" intoString:nil];
     [scanner scanFloat: &red];
     [scanner scanString:@"green:" intoString:nil];
     [scanner scanFloat: &green];
@@ -215,6 +215,20 @@
         NSString *alpha = [self _componentToString: [color alphaComponent]];
         return [NSString stringWithFormat: @"[UIColor colorWithRed:%@ green:%@ blue:%@ alpha:%@]", red, green, blue, alpha];
     }
+}
+
+-(NSString *)toMotionUIColor:(BOOL)shortVersion {
+    NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+    
+    if (shortVersion) {
+        return [self toObjcNSColor: YES];
+    } else {
+        NSString *red   = [self _componentToString: [color redComponent]];
+        NSString *green = [self _componentToString: [color greenComponent]];
+        NSString *blue  = [self _componentToString: [color blueComponent]];
+        NSString *alpha = [self _componentToString: [color alphaComponent]];
+        return [NSString stringWithFormat: @"UIColor.colorWithRed(%@, green:%@, blue:%@, alpha:%@)", red, green, blue, alpha];
+    }    
 }
 
 @end
