@@ -263,7 +263,7 @@
 											</object>
 											<object class="NSMenuItem" id="869050022">
 												<reference key="NSMenu" ref="454462147"/>
-												<string key="NSTitle">[UIColor.colorWithRed:1.0000 green:0.0000 blue:0.0000 alpha:1.0000]</string>
+												<string key="NSTitle">[UIColor colorWithRed:1.0000 green:0.0000 blue:0.0000 alpha:1.0000]</string>
 												<string key="NSKeyEquiv"/>
 												<int key="NSMnemonicLoc">2147483647</int>
 												<reference key="NSOnImage" ref="35465992"/>
