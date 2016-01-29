@@ -1,6 +1,6 @@
 #import "FTColorPanel.h"
 
-#define CONTENT_BOX_INDEX 3
+#define CONTENT_BOX_INDEX 4
 #define DIVIDER_INDEX 5
 
 #define CONTENT_BOX_OFFSET 30
