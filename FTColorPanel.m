@@ -3,7 +3,7 @@
 #define CONTENT_BOX_INDEX 4
 #define DIVIDER_INDEX 5
 
-#define CONTENT_BOX_OFFSET 30
+#define CONTENT_BOX_OFFSET 26
 #define SPACING 8
 
 @implementation FTColorPanel
@@ -22,13 +22,19 @@
     // a bit smaller to make place for the new divider and text field and move
     // it up by the same offset to locate it in the original position.
     id contentBox = [[[self contentView] subviews] objectAtIndex: CONTENT_BOX_INDEX];
-    NSRect contentBoxFrame       = [contentBox frame];
-    contentBoxFrame.origin.y    += CONTENT_BOX_OFFSET;
-    contentBoxFrame.size.height -= CONTENT_BOX_OFFSET;
-    [contentBox setFrame: contentBoxFrame];
+
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:contentBox
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:[[[self contentView] subviews] firstObject]
+                                                                    attribute:NSLayoutAttributeTop
+                                                                   multiplier:1
+                                                                     constant:-(CONTENT_BOX_OFFSET + SPACING)];
+    [[self contentView] addConstraint:constraint];
+
     
-    // Add a new divider under the opacity slider
-    NSRect newDividerFrame = NSMakeRect(0, contentBoxFrame.origin.y - (SPACING - 1), totalWidth, 1);
+    //  Add a new divider under the opacity slider
+    NSRect newDividerFrame = NSMakeRect(0, [contentBox frame].origin.y + CONTENT_BOX_OFFSET, totalWidth, 1);
     NSBox *newDivider      = [[NSBox alloc] initWithFrame: newDividerFrame];
     [newDivider setBoxType: NSBoxSeparator];
     [newDivider setAutoresizingMask: NSViewWidthSizable];
