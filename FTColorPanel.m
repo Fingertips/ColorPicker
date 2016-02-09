@@ -53,6 +53,10 @@
     [colorCodeField setAutoresizingMask: NSViewWidthSizable | NSViewMaxYMargin];
     [[self contentView] addSubview: colorCodeField];
     
+    
+    // Hide the NSColorPanelResizeDimple
+    [[[[self contentView] subviews] objectAtIndex: 1] setHidden:YES];
+    
     [self updateStringRepresentationOfColor];
     
     return self;
