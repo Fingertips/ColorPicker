@@ -31,15 +31,15 @@
 
     //  Add a new divider under the opacity slider
     float totalWidth = [[self contentView] frame].size.width;
-    NSRect newDividerFrame = NSMakeRect(0, [contentBox frame].origin.y - 1.5 + 31, totalWidth, 1);
+    NSRect newDividerFrame = NSMakeRect(0, 0, totalWidth, 1);
     NSBox *newDivider      = [[NSBox alloc] initWithFrame: newDividerFrame];
     [newDivider setBoxType: NSBoxSeparator];
     [newDivider setAutoresizingMask: NSViewWidthSizable];
-    [[self contentView] addSubview: newDivider];
+    [contentBox addSubview: newDivider];
     
     // Add the new text field underneath the new divider and the existing divider above
     float fontSize             = [NSFont smallSystemFontSize];
-    float colorCodeFieldY      = newDividerFrame.origin.y - (fontSize + SPACING);
+    float colorCodeFieldY      = [contentBox frame].origin.y + SPACING;
     NSRect colorCodeFieldFrame = NSMakeRect(0, colorCodeFieldY, totalWidth, fontSize + 2);
     colorCodeField = [[NSTextField alloc] initWithFrame: colorCodeFieldFrame];
     // set the text properties
