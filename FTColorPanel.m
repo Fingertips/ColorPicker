@@ -50,12 +50,26 @@
     [colorCodeField setDrawsBackground: NO];
     [colorCodeField setEditable: NO];
     [colorCodeField setSelectable: YES];
-    [colorCodeField setAutoresizingMask: NSViewWidthSizable | NSViewMaxYMargin];
-    [[self contentView] addSubview: colorCodeField];
-    
+    colorCodeField.translatesAutoresizingMaskIntoConstraints = NO;
     
     // Hide the NSColorPanelResizeDimple
     [[[[self contentView] subviews] objectAtIndex: 1] setHidden:YES];
+
+    NSLayoutConstraint *colorCodeFieldWidthConstraint = [NSLayoutConstraint constraintWithItem:colorCodeField
+                                                                                     attribute:NSLayoutAttributeWidth
+                                                                                     relatedBy:NSLayoutRelationEqual
+                                                                                        toItem:self.contentView
+                                                                                     attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
+    
+    NSLayoutConstraint *colorCodeFieldYConstraint = [NSLayoutConstraint constraintWithItem:colorCodeField
+                                                                                    attribute:NSLayoutAttributeTop
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                        toItem:contentBox
+                                                                                    attribute:NSLayoutAttributeBottom multiplier:1 constant:SPACING - 2];
+
+
+    [[self contentView] addSubview: colorCodeField];
+    [self.contentView addConstraints: @[colorCodeFieldWidthConstraint, colorCodeFieldYConstraint]];
     
     [self updateStringRepresentationOfColor];
     
