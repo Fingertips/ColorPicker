@@ -52,9 +52,6 @@
     [colorCodeField setSelectable: YES];
     colorCodeField.translatesAutoresizingMaskIntoConstraints = NO;
     
-    // Hide the NSColorPanelResizeDimple
-    [[[[self contentView] subviews] objectAtIndex: 1] setHidden:YES];
-
     NSLayoutConstraint *colorCodeFieldWidthConstraint = [NSLayoutConstraint constraintWithItem:colorCodeField
                                                                                      attribute:NSLayoutAttributeWidth
                                                                                      relatedBy:NSLayoutRelationEqual
