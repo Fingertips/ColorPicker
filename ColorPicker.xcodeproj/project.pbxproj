@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		1F8E478A1C8F35A800A36A92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E47891C8F35A800A36A92 /* Images.xcassets */; };
 		51286DF1115CC2A60088BF7A /* NSColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 51286DF0115CC2A60088BF7A /* NSColorAdditions.m */; };
 		51286E18115CD64D0088BF7A /* NSColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 51286DF0115CC2A60088BF7A /* NSColorAdditions.m */; };
 		51286E19115CD6580088BF7A /* NSColorAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 51286DEF115CC2A60088BF7A /* NSColorAdditions.h */; };
@@ -38,6 +39,7 @@
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1F1ED721159A08CB00D8EF90 /* Persistent Color Picker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Persistent Color Picker.entitlements"; sourceTree = "<group>"; };
+		1F8E47891C8F35A800A36A92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ColorPicker/Images.xcassets; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* ColorPicker_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPicker_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -140,6 +142,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1F8E47891C8F35A800A36A92 /* Images.xcassets */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				1F8E478A1C8F35A800A36A92 /* Images.xcassets in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				7622A050111C29F600C7013E /* ColorPicker.icns in Resources */,
 			);
@@ -401,6 +405,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "Persistent Color Picker.entitlements";
 				CODE_SIGN_IDENTITY = "";
@@ -422,6 +427,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "Persistent Color Picker.entitlements";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";

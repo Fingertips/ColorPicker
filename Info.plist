@@ -8,8 +8,6 @@
 	<array/>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
-	<string>ColorPicker.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.fngtps.PersistentColorPicker</string>
 	<key>CFBundleInfoDictionaryVersion</key>
