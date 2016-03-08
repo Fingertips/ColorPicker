@@ -1,0 +1,5 @@
+Persistent Color Picker gives the default Mac OS X Color Picker its own window. You’ll never again lose the color panel when you switch between applications; It’s always there when you need it!
+
+Copy and paste color values from HTML, CSS, Objective-C, Swift, or RubyMotion code. Choose between various formats for use when copying to the clipboard.
+
+Use the eyedropper tool to pick up colors from anywhere on your screen. Easily create color palettes and share them between all your apps.
