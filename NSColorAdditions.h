@@ -20,7 +20,7 @@
 -(NSString *)toHSLAString:(BOOL)shortVersion;
 
 -(NSString *)toObjcNSColor:(BOOL)shortVersion;
--(NSString *)toMacRubyNSColor:(BOOL)shortVersion;
+-(NSString *)toMotionNSColor:(BOOL)shortVersion;
 
 -(NSString *)toObjcUIColor:(BOOL)shortVersion;
 -(NSString *)toMotionUIColor:(BOOL)shortVersion;

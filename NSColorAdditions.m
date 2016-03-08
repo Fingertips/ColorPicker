@@ -36,7 +36,7 @@
     red = ((unsigned int)r / 255.0); green = ((unsigned int)g / 255.0); blue = ((unsigned int)b / 255.0);
     
   } else if ([scanner scanString:@"[NSColor" intoString:nil] || [scanner scanString:@"NSColor." intoString:nil]) {
-    // objective-c or macruby NSColor
+    // Objective-C or RubyMotion NSColor
     [scanner scanString:@"colorWithCalibratedRed:" intoString:nil] || [scanner scanString:@"colorWithCalibratedRed(" intoString:nil];
     [scanner scanFloat: &red];
     [scanner scanString:@"green:" intoString:nil];
@@ -187,7 +187,7 @@
   }
 }
 
--(NSString *)toMacRubyNSColor:(BOOL)shortVersion {
+-(NSString *)toMotionNSColor:(BOOL)shortVersion {
   if (shortVersion) {
     return [self toObjcNSColor: YES];
   }
