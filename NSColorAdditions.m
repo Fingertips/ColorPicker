@@ -187,6 +187,20 @@
   }
 }
 
+-(NSString *)toSwiftNSColor:(BOOL)shortVersion {
+    NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+
+    if (shortVersion) {
+        return [self toObjcNSColor: YES];
+    } else {
+        NSString *red   = [self _componentToString: [color redComponent]];
+        NSString *green = [self _componentToString: [color greenComponent]];
+        NSString *blue  = [self _componentToString: [color blueComponent]];
+        NSString *alpha = [self _componentToString: [color alphaComponent]];
+        return [NSString stringWithFormat: @"NSColor(calibratedRed: %@ green: %@ blue: %@ alpha: %@)", red, green, blue, alpha];
+    }
+}
+
 -(NSString *)toMotionNSColor:(BOOL)shortVersion {
   if (shortVersion) {
     return [self toObjcNSColor: YES];
@@ -216,6 +230,20 @@
     NSString *alpha = [self _componentToString: [color alphaComponent]];
     return [NSString stringWithFormat: @"[UIColor colorWithRed:%@ green:%@ blue:%@ alpha:%@]", red, green, blue, alpha];
   }
+}
+
+-(NSString *)toSwiftUIColor:(BOOL)shortVersion {
+    if (shortVersion) {
+        return [self toObjcNSColor: YES];
+    } else {
+        NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+
+        NSString *red   = [self _componentToString: [color redComponent]];
+        NSString *green = [self _componentToString: [color greenComponent]];
+        NSString *blue  = [self _componentToString: [color blueComponent]];
+        NSString *alpha = [self _componentToString: [color alphaComponent]];
+        return [NSString stringWithFormat: @"UIColor(red: %@ green: %@ blue: %@ alpha: %@)", red, green, blue, alpha];
+    }
 }
 
 -(NSString *)toMotionUIColor:(BOOL)shortVersion {

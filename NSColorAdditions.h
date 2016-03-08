@@ -20,8 +20,10 @@
 -(NSString *)toHSLAString:(BOOL)shortVersion;
 
 -(NSString *)toObjcNSColor:(BOOL)shortVersion;
+-(NSString *)toSwiftNSColor:(BOOL)shortVersion;
 -(NSString *)toMotionNSColor:(BOOL)shortVersion;
 
 -(NSString *)toObjcUIColor:(BOOL)shortVersion;
+-(NSString *)toSwiftUIColor:(BOOL)shortVersion;
 -(NSString *)toMotionUIColor:(BOOL)shortVersion;
 @end

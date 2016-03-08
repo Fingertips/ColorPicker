@@ -104,8 +104,10 @@
     case HSL_COLOR_MODE:              return [color toHSLString:      shortVersion];
     case HSLA_COLOR_MODE:             return [color toHSLAString:     shortVersion];
     case OBJC_NSCOLOR_COLOR_MODE:     return [color toObjcNSColor:    shortVersion];
-    case MOTION_NSCOLOR_COLOR_MODE:   return [color toMotionNSColor: shortVersion];
+    case SWIFT_NSCOLOR_COLOR_MODE:    return [color toSwiftNSColor:   shortVersion];
+    case MOTION_NSCOLOR_COLOR_MODE:   return [color toMotionNSColor:  shortVersion];
     case OBJC_UICOLOR_COLOR_MODE:     return [color toObjcUIColor:    shortVersion];
+    case SWIFT_UICOLOR_COLOR_MODE:    return [color toSwiftUIColor:   shortVersion];
     case MOTION_UICOLOR_COLOR_MODE:   return [color toMotionUIColor:  shortVersion];
   }
   
