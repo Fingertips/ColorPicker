@@ -107,31 +107,31 @@
                                                 <action selector="copyAs:" target="533" id="552"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="NSColor(calibratedRed:1, green:0, blue:0, alpha:1)" tag="10" id="uag-Xv-4uL">
+                                        <menuItem title="NSColor(calibratedRed:1, green:0, blue:0, alpha:1)" tag="7" id="uag-Xv-4uL">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="copyAs:" target="533" id="zlO-Jg-qgo"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="NSColor.colorWithCalibratedRed(1, green: 0, blue: 0, alpha: 1)" tag="7" id="546">
+                                        <menuItem title="NSColor.colorWithCalibratedRed(1, green:0, blue:0, alpha:1)" tag="8" id="546">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="copyAs:" target="533" id="553"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="[UIColor colorWithRed:1.0000 green:0.0000 blue:0.0000 alpha:1.0000]" tag="8" id="570">
+                                        <menuItem title="[UIColor colorWithRed:1.0000 green:0.0000 blue:0.0000 alpha:1.0000]" tag="9" id="570">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="copyAs:" target="533" id="572"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="UIColor(red: 1, green: 0, blue: 0, alpha: 1)" tag="11" id="dHL-MM-9Kw">
+                                        <menuItem title="UIColor(red:1, green:0, blue:0, alpha:1)" tag="10" id="dHL-MM-9Kw">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="copyAs:" target="533" id="4AM-5r-Mq8"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="UIColor.colorWithRed(1, green:0, blue:0, alpha:1)" tag="9" id="575">
+                                        <menuItem title="UIColor.colorWithRed(1, green:0, blue:0, alpha:1)" tag="11" id="575">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="copyAs:" target="533" id="576"/>

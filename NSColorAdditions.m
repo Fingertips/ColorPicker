@@ -197,7 +197,7 @@
         NSString *green = [self _componentToString: [color greenComponent]];
         NSString *blue  = [self _componentToString: [color blueComponent]];
         NSString *alpha = [self _componentToString: [color alphaComponent]];
-        return [NSString stringWithFormat: @"NSColor(calibratedRed: %@ green: %@ blue: %@ alpha: %@)", red, green, blue, alpha];
+        return [NSString stringWithFormat: @"NSColor(calibratedRed: %@ green:%@ blue%@ alpha:%@)", red, green, blue, alpha];
     }
 }
 
@@ -208,7 +208,7 @@
 
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
 
-  NSString *result = [NSString stringWithFormat: @"NSColor.colorWithCalibratedRed(%g, green: %g, blue: %g, alpha: %g)",
+  NSString *result = [NSString stringWithFormat: @"NSColor.colorWithCalibratedRed(%g, green:%g, blue:%g, alpha:%g)",
                                                  [color redComponent],
                                                  [color greenComponent],
                                                  [color blueComponent],
@@ -242,7 +242,7 @@
         NSString *green = [self _componentToString: [color greenComponent]];
         NSString *blue  = [self _componentToString: [color blueComponent]];
         NSString *alpha = [self _componentToString: [color alphaComponent]];
-        return [NSString stringWithFormat: @"UIColor(red: %@ green: %@ blue: %@ alpha: %@)", red, green, blue, alpha];
+        return [NSString stringWithFormat: @"UIColor(red:%@ green:%@ blue:%@ alpha:%@)", red, green, blue, alpha];
     }
 }
 
@@ -252,7 +252,7 @@
   } else {
     NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
 
-    NSString *result = [NSString stringWithFormat: @"UIColor.colorWithRed(%g, green: %g, blue: %g, alpha: %g)",
+    NSString *result = [NSString stringWithFormat: @"UIColor.colorWithRed(%g, green:%g, blue:%g, alpha:%g)",
                                                    [color redComponent],
                                                    [color greenComponent],
                                                    [color blueComponent],
