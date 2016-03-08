@@ -224,7 +224,7 @@
   } else {
     NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
 
-    NSString *result = [NSString stringWithFormat: @"NSColor.colorWithCalibratedRed(%g, green: %g, blue: %g, alpha: %g)",
+    NSString *result = [NSString stringWithFormat: @"UIColor.colorWithRed(%g, green: %g, blue: %g, alpha: %g)",
                                                    [color redComponent],
                                                    [color greenComponent],
                                                    [color blueComponent],
