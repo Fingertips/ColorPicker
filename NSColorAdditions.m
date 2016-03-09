@@ -127,11 +127,11 @@
 -(NSString *)toRGBAString:(BOOL)shortVersion {
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
-  NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d, %d, %g" : @"rgba(%d, %d, %d, %g)"),
+  NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d, %d, %@" : @"rgba(%d, %d, %d, %@)"),
                        (unsigned int)(255 * [color redComponent]),
                        (unsigned int)(255 * [color greenComponent]),
                        (unsigned int)(255 * [color blueComponent]),
-                       (float)[color alphaComponent]];
+                       [self _componentToString: [color alphaComponent] withFormat:@"%.2f"]];
   
   return result;
 }
@@ -150,39 +150,43 @@
 -(NSString *)toHSLAString:(BOOL)shortVersion {
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
-  NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d%%, %d%%, %g" : @"hsla(%d, %d%%, %d%%, %g)"),
+  NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d%%, %d%%, %@" : @"hsla(%d, %d%%, %d%%, %@)"),
                        (unsigned int)(360 * [color hueComponent]),
                        (unsigned int)(100 * [color saturationComponent]),
                        (unsigned int)(100 * [color brightnessComponent]),
-                       (float)[color alphaComponent]];
+                       [self _componentToString: [color alphaComponent] withFormat:@"%.2f"]];
   
   return result;
 }
 
 -(NSString *)_componentToString:(CGFloat)component {
-  if (component == 0.0) {
-    return @"0.0";
-  } else if (component == 1.0) {
-    return @"1.0";
-  } else {
-    return [NSString stringWithFormat: @"%g", component];
-  }
+  return [self _componentToString:component withFormat:@"%g"];
+}
+
+-(NSString *)_componentToString:(CGFloat)component withFormat:(NSString*)format {
+    if (component == 0.0) {
+        return @"0.0";
+    } else if (component == 1.0) {
+        return @"1.0";
+    } else {
+        return [NSString stringWithFormat: format, component];
+    }
 }
 
 -(NSString *)toObjcNSColor:(BOOL)shortVersion {
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
   if (shortVersion) {
-    return [NSString stringWithFormat: @"%g %g %g %g",
+    return [NSString stringWithFormat: @"%g %g %g %@",
                                        [color redComponent],
                                        [color greenComponent],
                                        [color blueComponent],
-                                       [color alphaComponent]];
+                                       [self _componentToString: [color alphaComponent] withFormat:@"%.2f"]];
   } else {
     NSString *red   = [self _componentToString: [color redComponent]];
     NSString *green = [self _componentToString: [color greenComponent]];
     NSString *blue  = [self _componentToString: [color blueComponent]];
-    NSString *alpha = [self _componentToString: [color alphaComponent]];
+    NSString *alpha = [self _componentToString: [color alphaComponent] withFormat:@"%.2f"];
     return [NSString stringWithFormat: @"[NSColor colorWithCalibratedRed:%@ green:%@ blue:%@ alpha:%@]", red, green, blue, alpha];
   }
 }
@@ -196,7 +200,7 @@
         NSString *red   = [self _componentToString: [color redComponent]];
         NSString *green = [self _componentToString: [color greenComponent]];
         NSString *blue  = [self _componentToString: [color blueComponent]];
-        NSString *alpha = [self _componentToString: [color alphaComponent]];
+        NSString *alpha = [self _componentToString: [color alphaComponent] withFormat:@"%.2f"];
         return [NSString stringWithFormat: @"NSColor(calibratedRed: %@ green:%@ blue%@ alpha:%@)", red, green, blue, alpha];
     }
 }
@@ -208,11 +212,11 @@
 
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
 
-  NSString *result = [NSString stringWithFormat: @"NSColor.colorWithCalibratedRed(%g, green:%g, blue:%g, alpha:%g)",
+  NSString *result = [NSString stringWithFormat: @"NSColor.colorWithCalibratedRed(%g, green:%g, blue:%g, alpha:%@)",
                                                  [color redComponent],
                                                  [color greenComponent],
                                                  [color blueComponent],
-                                                 [color alphaComponent]];
+                                                 [self _componentToString: [color alphaComponent] withFormat:@"%.2f"]];
 
   return result;
 }
@@ -227,7 +231,7 @@
     NSString *red   = [self _componentToString: [color redComponent]];
     NSString *green = [self _componentToString: [color greenComponent]];
     NSString *blue  = [self _componentToString: [color blueComponent]];
-    NSString *alpha = [self _componentToString: [color alphaComponent]];
+    NSString *alpha = [self _componentToString: [color alphaComponent] withFormat:@"%.2f"];
     return [NSString stringWithFormat: @"[UIColor colorWithRed:%@ green:%@ blue:%@ alpha:%@]", red, green, blue, alpha];
   }
 }
@@ -241,7 +245,7 @@
         NSString *red   = [self _componentToString: [color redComponent]];
         NSString *green = [self _componentToString: [color greenComponent]];
         NSString *blue  = [self _componentToString: [color blueComponent]];
-        NSString *alpha = [self _componentToString: [color alphaComponent]];
+        NSString *alpha = [self _componentToString: [color alphaComponent] withFormat:@"%.2f"];
         return [NSString stringWithFormat: @"UIColor(red:%@ green:%@ blue:%@ alpha:%@)", red, green, blue, alpha];
     }
 }
@@ -252,11 +256,11 @@
   } else {
     NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
 
-    NSString *result = [NSString stringWithFormat: @"UIColor.colorWithRed(%g, green:%g, blue:%g, alpha:%g)",
+    NSString *result = [NSString stringWithFormat: @"UIColor.colorWithRed(%g, green:%g, blue:%g, alpha:%@)",
                                                    [color redComponent],
                                                    [color greenComponent],
                                                    [color blueComponent],
-                                                   [color alphaComponent]];
+                                                   [self _componentToString: [color alphaComponent] withFormat:@"%.2f"]];
 
     return result;
   }    
