@@ -211,14 +211,12 @@
   }
 
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+  NSString *red   = [self _componentToString: [color redComponent]];
+  NSString *green = [self _componentToString: [color greenComponent]];
+  NSString *blue  = [self _componentToString: [color blueComponent]];
+  NSString *alpha = [self _componentToString: [color alphaComponent] withFormat:@"%.2f"];
 
-  NSString *result = [NSString stringWithFormat: @"NSColor.colorWithCalibratedRed(%g, green:%g, blue:%g, alpha:%@)",
-                                                 [color redComponent],
-                                                 [color greenComponent],
-                                                 [color blueComponent],
-                                                 [self _componentToString: [color alphaComponent] withFormat:@"%.2f"]];
-
-  return result;
+  return [NSString stringWithFormat: @"NSColor(calibratedRed: %@ green:%@ blue%@ alpha:%@)", red, green, blue, alpha];
 }
 
 -(NSString *)toObjcUIColor:(BOOL)shortVersion {
@@ -255,15 +253,13 @@
     return [self toObjcNSColor: YES];
   } else {
     NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
+    NSString *red   = [self _componentToString: [color redComponent]];
+    NSString *green = [self _componentToString: [color greenComponent]];
+    NSString *blue  = [self _componentToString: [color blueComponent]];
+    NSString *alpha = [self _componentToString: [color alphaComponent] withFormat:@"%.2f"];
 
-    NSString *result = [NSString stringWithFormat: @"UIColor.colorWithRed(%g, green:%g, blue:%g, alpha:%@)",
-                                                   [color redComponent],
-                                                   [color greenComponent],
-                                                   [color blueComponent],
-                                                   [self _componentToString: [color alphaComponent] withFormat:@"%.2f"]];
-
-    return result;
-  }    
+    return [NSString stringWithFormat: @"UIColor.colorWithRed(%@ green:%@ blue%@ alpha:%@)", red, green, blue, alpha];
+  }
 }
 
 @end
