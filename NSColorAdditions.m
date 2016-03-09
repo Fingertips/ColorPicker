@@ -131,7 +131,7 @@
                        (unsigned int)(255 * [color redComponent]),
                        (unsigned int)(255 * [color greenComponent]),
                        (unsigned int)(255 * [color blueComponent]),
-                       [self _componentToString: [color alphaComponent] withFormat:@"%.2f"]];
+                       [self _componentToString:[color alphaComponent] withValueForOne:@"1" withValueForZero:@"0" withFormat:@"%.2f"]];
   
   return result;
 }
@@ -154,7 +154,7 @@
                        (unsigned int)(360 * [color hueComponent]),
                        (unsigned int)(100 * [color saturationComponent]),
                        (unsigned int)(100 * [color brightnessComponent]),
-                       [self _componentToString: [color alphaComponent] withFormat:@"%.2f"]];
+                       [self _componentToString:[color alphaComponent] withValueForOne:@"1" withValueForZero:@"0" withFormat:@"%.2f"]];
   
   return result;
 }
@@ -164,10 +164,14 @@
 }
 
 -(NSString *)_componentToString:(CGFloat)component withFormat:(NSString*)format {
+  return [self _componentToString:component withValueForOne:@"1.0" withValueForZero:@"0.0" withFormat:format];
+}
+
+-(NSString *)_componentToString:(CGFloat)component withValueForOne:(NSString*)valueForOne withValueForZero:(NSString*)valueForZero withFormat:(NSString*)format {
     if (component == 0.0) {
-        return @"0.0";
+        return valueForZero;
     } else if (component == 1.0) {
-        return @"1.0";
+        return valueForOne;
     } else {
         return [NSString stringWithFormat: format, component];
     }
