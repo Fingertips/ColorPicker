@@ -14,7 +14,6 @@
 		51286E19115CD6580088BF7A /* NSColorAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 51286DEF115CC2A60088BF7A /* NSColorAdditions.h */; };
 		51286F68115D1FE80088BF7A /* FTColorPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51286F67115D1FE80088BF7A /* FTColorPanel.m */; };
 		51754D23111980180074BCBD /* ApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51754D22111980180074BCBD /* ApplicationController.m */; };
-		7622A050111C29F600C7013E /* ColorPicker.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7622A04F111C29F600C7013E /* ColorPicker.icns */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -53,7 +52,6 @@
 		51754D21111980180074BCBD /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
 		51754D22111980180074BCBD /* ApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationController.m; sourceTree = "<group>"; };
 		633B464A13A0C4A3007D4157 /* Persistent Color Picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Persistent Color Picker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7622A04F111C29F600C7013E /* ColorPicker.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ColorPicker.icns; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,7 +115,6 @@
 				1F1ED721159A08CB00D8EF90 /* Persistent Color Picker.entitlements */,
 				51286DEF115CC2A60088BF7A /* NSColorAdditions.h */,
 				51286DF0115CC2A60088BF7A /* NSColorAdditions.m */,
-				7622A04F111C29F600C7013E /* ColorPicker.icns */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -295,7 +292,6 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1F8E478A1C8F35A800A36A92 /* Images.xcassets in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				7622A050111C29F600C7013E /* ColorPicker.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
