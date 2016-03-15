@@ -94,7 +94,7 @@
 }
 
 -(NSString *)toHexStringWithoutHash {
-    NSColor *color = [self colorUsingColorSpace: [NSColorSpace genericRGBColorSpace]];
+    NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
     
     NSString *result = [NSString stringWithFormat: @"%02x%02x%02x",
                         (unsigned int)round(255 * [color redComponent]),
@@ -114,7 +114,7 @@
 }
 
 -(NSString *)toRGBString:(BOOL)shortVersion {
-  NSColor *color = [self colorUsingColorSpace: [NSColorSpace genericRGBColorSpace]];
+  NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
   
   NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d, %d" : @"rgb(%d, %d, %d)"),
                        (unsigned int)round(255 * [color redComponent]),
@@ -125,7 +125,7 @@
 }
 
 -(NSString *)toRGBAString:(BOOL)shortVersion {
-  NSColor *color = [self colorUsingColorSpace: [NSColorSpace genericRGBColorSpace]];
+  NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
   
   NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d, %d, %@" : @"rgba(%d, %d, %d, %@)"),
                        (unsigned int)round(255 * [color redComponent]),
@@ -137,7 +137,7 @@
 }
 
 -(NSString *)toHSLString:(BOOL)shortVersion {
-  NSColor *color = [self colorUsingColorSpace: [NSColorSpace genericRGBColorSpace]];
+  NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
   
   NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d%%, %d%%" : @"hsl(%d, %d%%, %d%%)"),
                        (unsigned int)round(360 * [color hueComponent]),
@@ -148,7 +148,7 @@
 }
 
 -(NSString *)toHSLAString:(BOOL)shortVersion {
-  NSColor *color = [self colorUsingColorSpace: [NSColorSpace genericRGBColorSpace]];
+  NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
   
   NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d%%, %d%%, %@" : @"hsla(%d, %d%%, %d%%, %@)"),
                        (unsigned int)round(360 * [color hueComponent]),
@@ -228,7 +228,7 @@
   if (shortVersion) {
     return [self toObjcNSColor: YES];
   } else {
-    NSColor *color = [self colorUsingColorSpace: [NSColorSpace genericRGBColorSpace]];
+    NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
 
     NSString *red   = [self _componentToString: [color redComponent]];
     NSString *green = [self _componentToString: [color greenComponent]];
@@ -242,7 +242,7 @@
     if (shortVersion) {
         return [self toObjcNSColor: YES];
     } else {
-        NSColor *color = [self colorUsingColorSpace: [NSColorSpace genericRGBColorSpace]];
+        NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
 
         NSString *red   = [self _componentToString: [color redComponent]];
         NSString *green = [self _componentToString: [color greenComponent]];
@@ -256,7 +256,7 @@
   if (shortVersion) {
     return [self toObjcNSColor: YES];
   } else {
-    NSColor *color = [self colorUsingColorSpace: [NSColorSpace genericRGBColorSpace]];
+    NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
     NSString *red   = [self _componentToString: [color redComponent]];
     NSString *green = [self _componentToString: [color greenComponent]];
     NSString *blue  = [self _componentToString: [color blueComponent]];
