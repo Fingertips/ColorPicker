@@ -97,9 +97,9 @@
     NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
     
     NSString *result = [NSString stringWithFormat: @"%02x%02x%02x",
-                        (unsigned int)(255 * [color redComponent]),
-                        (unsigned int)(255 * [color greenComponent]),
-                        (unsigned int)(255 * [color blueComponent])];
+                        (unsigned int)round(255 * [color redComponent]),
+                        (unsigned int)round(255 * [color greenComponent]),
+                        (unsigned int)round(255 * [color blueComponent])];
     
     if (([result characterAtIndex: 0] == [result characterAtIndex: 1]) &&
         ([result characterAtIndex: 2] == [result characterAtIndex: 3]) &&
@@ -117,9 +117,9 @@
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
   NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d, %d" : @"rgb(%d, %d, %d)"),
-                       (unsigned int)(255 * [color redComponent]),
-                       (unsigned int)(255 * [color greenComponent]),
-                       (unsigned int)(255 * [color blueComponent])];
+                       (unsigned int)round(255 * [color redComponent]),
+                       (unsigned int)round(255 * [color greenComponent]),
+                       (unsigned int)round(255 * [color blueComponent])];
   
   return result;
 }
@@ -128,9 +128,9 @@
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
   NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d, %d, %@" : @"rgba(%d, %d, %d, %@)"),
-                       (unsigned int)(255 * [color redComponent]),
-                       (unsigned int)(255 * [color greenComponent]),
-                       (unsigned int)(255 * [color blueComponent]),
+                       (unsigned int)round(255 * [color redComponent]),
+                       (unsigned int)round(255 * [color greenComponent]),
+                       (unsigned int)round(255 * [color blueComponent]),
                        [self _componentToString:[color alphaComponent] withValueForOne:@"1" withValueForZero:@"0" withFormat:@"%.2f"]];
   
   return result;
@@ -140,9 +140,9 @@
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
   NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d%%, %d%%" : @"hsl(%d, %d%%, %d%%)"),
-                       (unsigned int)(360 * [color hueComponent]),
-                       (unsigned int)(100 * [color saturationComponent]),
-                       (unsigned int)(100 * [color brightnessComponent])];
+                       (unsigned int)round(360 * [color hueComponent]),
+                       (unsigned int)round(100 * [color saturationComponent]),
+                       (unsigned int)round(100 * [color brightnessComponent])];
   
   return result;
 }
@@ -151,9 +151,9 @@
   NSColor *color = [self colorUsingColorSpaceName: NSCalibratedRGBColorSpace];
   
   NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d%%, %d%%, %@" : @"hsla(%d, %d%%, %d%%, %@)"),
-                       (unsigned int)(360 * [color hueComponent]),
-                       (unsigned int)(100 * [color saturationComponent]),
-                       (unsigned int)(100 * [color brightnessComponent]),
+                       (unsigned int)round(360 * [color hueComponent]),
+                       (unsigned int)round(100 * [color saturationComponent]),
+                       (unsigned int)round(100 * [color brightnessComponent]),
                        [self _componentToString:[color alphaComponent] withValueForOne:@"1" withValueForZero:@"0" withFormat:@"%.2f"]];
   
   return result;
