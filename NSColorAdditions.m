@@ -24,6 +24,7 @@
   }
   
   float red = 0, green = 0, blue = 0;
+  NSColorSpace *colorSpace = [NSColorSpace sRGBColorSpace];
   
   if ([scanner scanString:@"rgb(" intoString:nil] || [scanner scanString:@"rgba(" intoString:nil]) {
     signed int r = 0, g = 0, b = 0;
@@ -45,6 +46,7 @@
     [scanner scanFloat: &blue];
     [scanner scanString:@"alpha:" intoString:nil];
     [scanner scanFloat: &alpha];
+    colorSpace = [NSColorSpace genericRGBColorSpace];
 
   } else if ([scanner scanString:@"[UIColor" intoString:nil] || [scanner scanString:@"UIColor." intoString:nil]) {
     [scanner scanString:@"colorWithRed:" intoString:nil] || [scanner scanString:@"colorWithRed(" intoString:nil];
@@ -85,8 +87,9 @@
       return nil;
     }
   }
-  
-  return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
+
+  CGFloat components[] = {red, green, blue, alpha};
+  return [NSColor colorWithColorSpace:colorSpace components:components count:4];
 }
 
 -(NSString *)toHexString {
