@@ -50,12 +50,17 @@
     [colorCodeField setSelectable: YES];
     colorCodeField.translatesAutoresizingMaskIntoConstraints = NO;
 
-    NSView *colorCodeView = [[NSView alloc] initWithFrame: NSMakeRect(100, 100, 100, 100)];
+    NSView *colorCodeView = [[NSView alloc] init];
     colorCodeView.translatesAutoresizingMaskIntoConstraints = NO;
 
     [colorCodeView addSubview: colorCodeField];
     [[self contentView] addSubview: colorCodeView];
     
+    [self.contentView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"|-[field]-|"
+                                                                              options:NSLayoutFormatAlignAllCenterX
+                                                                              metrics:nil
+                                                                                views:@{@"field": colorCodeField}]];
+
     [self.contentView addConstraints: @[
       [NSLayoutConstraint constraintWithItem:colorCodeView
                                    attribute:NSLayoutAttributeWidth
@@ -77,12 +82,7 @@
                                       toItem:contentBox
                                    attribute:NSLayoutAttributeBottom
                                   multiplier:1
-                                    constant:SPACING - 2],
-      [NSLayoutConstraint constraintWithItem:colorCodeField
-                                   attribute:NSLayoutAttributeWidth
-                                   relatedBy:NSLayoutRelationEqual
-                                      toItem:colorCodeView
-                                   attribute:NSLayoutAttributeWidth multiplier:1 constant:0]
+                                    constant:SPACING - 2]
     ]];
 
     [self updateStringRepresentationOfColor];
