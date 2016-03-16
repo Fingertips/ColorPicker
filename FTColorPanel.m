@@ -49,23 +49,42 @@
     [colorCodeField setEditable: NO];
     [colorCodeField setSelectable: YES];
     colorCodeField.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    NSLayoutConstraint *colorCodeFieldWidthConstraint = [NSLayoutConstraint constraintWithItem:colorCodeField
-                                                                                     attribute:NSLayoutAttributeWidth
-                                                                                     relatedBy:NSLayoutRelationEqual
-                                                                                        toItem:self.contentView
-                                                                                     attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
-    
-    NSLayoutConstraint *colorCodeFieldYConstraint = [NSLayoutConstraint constraintWithItem:colorCodeField
-                                                                                    attribute:NSLayoutAttributeTop
-                                                                                    relatedBy:NSLayoutRelationEqual
-                                                                                        toItem:contentBox
-                                                                                    attribute:NSLayoutAttributeBottom multiplier:1 constant:SPACING - 2];
 
+    NSView *colorCodeView = [[NSView alloc] initWithFrame: NSMakeRect(100, 100, 100, 100)];
+    colorCodeView.translatesAutoresizingMaskIntoConstraints = NO;
 
-    [[self contentView] addSubview: colorCodeField];
-    [self.contentView addConstraints: @[colorCodeFieldWidthConstraint, colorCodeFieldYConstraint]];
+    [colorCodeView addSubview: colorCodeField];
+    [[self contentView] addSubview: colorCodeView];
     
+    [self.contentView addConstraints: @[
+      [NSLayoutConstraint constraintWithItem:colorCodeView
+                                   attribute:NSLayoutAttributeWidth
+                                   relatedBy:NSLayoutRelationEqual
+                                      toItem:self.contentView
+                                   attribute:NSLayoutAttributeWidth
+                                  multiplier:1
+                                    constant:0],
+      [NSLayoutConstraint constraintWithItem:colorCodeView
+                                   attribute:NSLayoutAttributeHeight
+                                   relatedBy:NSLayoutRelationEqual
+                                      toItem:nil
+                                   attribute:NSLayoutAttributeNotAnAttribute
+                                  multiplier:1
+                                    constant:fontSize + 2],
+      [NSLayoutConstraint constraintWithItem:colorCodeView
+                                   attribute:NSLayoutAttributeTop
+                                   relatedBy:NSLayoutRelationEqual
+                                      toItem:contentBox
+                                   attribute:NSLayoutAttributeBottom
+                                  multiplier:1
+                                    constant:SPACING - 2],
+      [NSLayoutConstraint constraintWithItem:colorCodeField
+                                   attribute:NSLayoutAttributeWidth
+                                   relatedBy:NSLayoutRelationEqual
+                                      toItem:colorCodeView
+                                   attribute:NSLayoutAttributeWidth multiplier:1 constant:0]
+    ]];
+
     [self updateStringRepresentationOfColor];
     
     return self;
