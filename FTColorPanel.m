@@ -1,8 +1,8 @@
 #import "FTColorPanel.h"
 
 #define CONTENT_BOX_INDEX 4
-#define CONTENT_BOX_OFFSET 30
-#define SPACING 10
+#define CONTENT_BOX_OFFSET 31
+#define SPACING 7
 
 @implementation FTColorPanel
 -(FTColorPanel *)init {
@@ -25,7 +25,7 @@
                                                                                toItem:contentBox
                                                                             attribute:NSLayoutAttributeBottom
                                                                            multiplier:1
-                                                                             constant:(CONTENT_BOX_OFFSET + SPACING)];
+                                                                             constant:(CONTENT_BOX_OFFSET + SPACING + 3)];
       
     [[self contentView] addConstraint:contentBoxConstraint];
 
@@ -38,7 +38,7 @@
     [contentBox addSubview: newDivider];
     
     // Add the new text field underneath the new divider and the existing divider above
-    float fontSize             = [NSFont smallSystemFontSize];
+    float fontSize = [NSFont smallSystemFontSize];
     colorCodeField = [[NSTextField alloc] init];
     // set the text properties
     [[colorCodeField cell] setFont: [NSFont systemFontOfSize: fontSize]];
@@ -49,16 +49,29 @@
     [colorCodeField setSelectable: YES];
     colorCodeField.translatesAutoresizingMaskIntoConstraints = NO;
 
+    NSButton *colorCodeButton = [[NSButton alloc] init];
+    [colorCodeButton setFont:[NSFont systemFontOfSize: fontSize]];
+    [colorCodeButton setButtonType:NSPushOnPushOffButton];
+    [colorCodeButton setEnabled:YES];
+    [colorCodeButton setBezelStyle:NSRoundRectBezelStyle];
+    colorCodeButton.translatesAutoresizingMaskIntoConstraints = NO;
+
     NSView *colorCodeView = [[NSView alloc] init];
     colorCodeView.translatesAutoresizingMaskIntoConstraints = NO;
 
     [colorCodeView addSubview: colorCodeField];
+    [colorCodeView addSubview: colorCodeButton];
     [[self contentView] addSubview: colorCodeView];
     
-    [self.contentView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"|-padding-[field]-padding-|"
-                                                                              options:NSLayoutFormatAlignAllCenterX
+    [self.contentView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"|-padding-[field]->=padding-[button]-padding-|"
+                                                                              options:NSLayoutFormatAlignAllBaseline
                                                                               metrics:@{@"padding": @10}
-                                                                                views:@{@"field": colorCodeField}]];
+                                                                                views:@{
+                                                                                        @"field": colorCodeField,
+                                                                                        @"button": colorCodeButton
+                                                                                      }
+                                       ]
+     ];
 
     [self.contentView addConstraints: @[
       [NSLayoutConstraint constraintWithItem:colorCodeView
@@ -74,7 +87,7 @@
                                       toItem:nil
                                    attribute:NSLayoutAttributeNotAnAttribute
                                   multiplier:1
-                                    constant:fontSize + 2],
+                                    constant:fontSize + 8],
       [NSLayoutConstraint constraintWithItem:colorCodeView
                                    attribute:NSLayoutAttributeTop
                                    relatedBy:NSLayoutRelationEqual
