@@ -42,7 +42,6 @@
     colorCodeField = [[NSTextField alloc] init];
     // set the text properties
     [[colorCodeField cell] setFont: [NSFont systemFontOfSize: fontSize]];
-    [colorCodeField setAlignment: NSCenterTextAlignment];
     // make it look like a label as in IB
     [colorCodeField setBezeled: NO];
     [colorCodeField setDrawsBackground: NO];
@@ -56,9 +55,9 @@
     [colorCodeView addSubview: colorCodeField];
     [[self contentView] addSubview: colorCodeView];
     
-    [self.contentView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"|-[field]-|"
+    [self.contentView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"|-padding-[field]-padding-|"
                                                                               options:NSLayoutFormatAlignAllCenterX
-                                                                              metrics:nil
+                                                                              metrics:@{@"padding": @10}
                                                                                 views:@{@"field": colorCodeField}]];
 
     [self.contentView addConstraints: @[
