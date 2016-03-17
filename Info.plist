@@ -40,5 +40,9 @@
 	<array/>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
+	<key>CFBundleHelpBookName</key>
+	<string>ColorPickerHelp</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>ColorPickerHelp</string>
 </dict>
 </plist>

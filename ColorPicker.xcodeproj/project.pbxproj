@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		1F8E478A1C8F35A800A36A92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E47891C8F35A800A36A92 /* Images.xcassets */; };
+		1FAAD9211C9B04EB00350BF3 /* ColorPickerHelp in Resources */ = {isa = PBXBuildFile; fileRef = 1FAAD91F1C9B04EB00350BF3 /* ColorPickerHelp */; };
 		51286DF1115CC2A60088BF7A /* NSColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 51286DF0115CC2A60088BF7A /* NSColorAdditions.m */; };
 		51286E18115CD64D0088BF7A /* NSColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 51286DF0115CC2A60088BF7A /* NSColorAdditions.m */; };
 		51286E19115CD6580088BF7A /* NSColorAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 51286DEF115CC2A60088BF7A /* NSColorAdditions.h */; };
@@ -39,6 +40,7 @@
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1F1ED721159A08CB00D8EF90 /* Persistent Color Picker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Persistent Color Picker.entitlements"; sourceTree = "<group>"; };
 		1F8E47891C8F35A800A36A92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ColorPicker/Images.xcassets; sourceTree = "<group>"; };
+		1FAAD9201C9B04EB00350BF3 /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = English.lproj/ColorPickerHelp; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* ColorPicker_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPicker_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -139,6 +141,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1FAAD91F1C9B04EB00350BF3 /* ColorPickerHelp */,
 				1F8E47891C8F35A800A36A92 /* Images.xcassets */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				1FAAD9211C9B04EB00350BF3 /* ColorPickerHelp in Resources */,
 				1F8E478A1C8F35A800A36A92 /* Images.xcassets in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 			);
@@ -334,6 +338,14 @@
 				1DDD58150DA1D0A300B32029 /* English */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		1FAAD91F1C9B04EB00350BF3 /* ColorPickerHelp */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1FAAD9201C9B04EB00350BF3 /* English */,
+			);
+			name = ColorPickerHelp;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
