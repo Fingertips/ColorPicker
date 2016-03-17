@@ -185,7 +185,7 @@
     [colorCodeButton setEnabled:YES];
   }
 
-  [colorCodeField setStringValue: [[[self color] colorSpace] localizedName]] ;
+  [colorCodeField setStringValue: [NSString stringWithFormat:@"%@ (%@)", [self representationStringOfCurrentColorMode:NO], [[[self color] colorSpace] localizedName]]];
 }
 
 -(void)colorSpaceButtonPressed {
