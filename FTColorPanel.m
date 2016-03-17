@@ -178,14 +178,14 @@
 
 -(void)updateStringRepresentationOfColor {
   [colorCodeButton setTitle: [self titleForColorSpace:[self desiredColorSpace]]];
-
+  
   if([self hasCorrectColorSpace]) {
     [colorCodeButton setEnabled:NO];
   } else {
     [colorCodeButton setEnabled:YES];
   }
 
-  [colorCodeField setStringValue: [NSString stringWithFormat:@"%@ (%@)", [self representationStringOfCurrentColorMode:NO], [[[self color] colorSpace] localizedName]]];
+  [colorCodeField setStringValue: [self representationStringOfCurrentColorMode: YES]];
 }
 
 -(void)colorSpaceButtonPressed {
