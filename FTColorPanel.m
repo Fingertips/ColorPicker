@@ -157,11 +157,21 @@
 }
 
 -(NSColorSpace *) desiredColorSpace {
-  if([self colorMode] == OBJC_NSCOLOR_COLOR_MODE){
-    return [NSColorSpace genericRGBColorSpace];
-  } else {
-    return [NSColorSpace sRGBColorSpace];
+  switch (_colorMode) {
+    case HEX_COLOR_MODE:              return [NSColorSpace sRGBColorSpace];
+    case HEX_WITHOUT_HASH_COLOR_MODE: return [NSColorSpace sRGBColorSpace];
+    case RGB_COLOR_MODE:              return [NSColorSpace sRGBColorSpace];
+    case RGBA_COLOR_MODE:             return [NSColorSpace sRGBColorSpace];
+    case HSL_COLOR_MODE:              return [NSColorSpace sRGBColorSpace];
+    case HSLA_COLOR_MODE:             return [NSColorSpace sRGBColorSpace];
+    case OBJC_NSCOLOR_COLOR_MODE:     return [NSColorSpace genericRGBColorSpace];
+    case SWIFT_NSCOLOR_COLOR_MODE:    return [NSColorSpace genericRGBColorSpace];
+    case MOTION_NSCOLOR_COLOR_MODE:   return [NSColorSpace genericRGBColorSpace];
+    case OBJC_UICOLOR_COLOR_MODE:     return [NSColorSpace sRGBColorSpace];
+    case SWIFT_UICOLOR_COLOR_MODE:    return [NSColorSpace sRGBColorSpace];
+    case MOTION_UICOLOR_COLOR_MODE:   return [NSColorSpace sRGBColorSpace];
   }
+  return nil;
 }
 
 -(void)updateStringRepresentationOfColor {
