@@ -43,6 +43,6 @@
 	<key>CFBundleHelpBookName</key>
 	<string>ColorPickerHelp</string>
 	<key>CFBundleHelpBookFolder</key>
-	<string>ColorPickerHelp</string>
+	<string>ColorPicker.help</string>
 </dict>
 </plist>
