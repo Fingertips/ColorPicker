@@ -18,6 +18,7 @@
 
 @interface FTColorPanel : NSColorPanel {
   NSTextField *colorCodeField;
+  NSButton *colorCodeButton;
   int _colorMode;
 }
 

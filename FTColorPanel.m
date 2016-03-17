@@ -49,12 +49,13 @@
     [colorCodeField setSelectable: YES];
     colorCodeField.translatesAutoresizingMaskIntoConstraints = NO;
 
-    NSButton *colorCodeButton = [[NSButton alloc] init];
+    colorCodeButton = [[NSButton alloc] init];
     [colorCodeButton setFont:[NSFont systemFontOfSize: fontSize]];
-    [colorCodeButton setButtonType:NSPushOnPushOffButton];
     [colorCodeButton setEnabled:YES];
     [colorCodeButton setBezelStyle:NSRoundRectBezelStyle];
     colorCodeButton.translatesAutoresizingMaskIntoConstraints = NO;
+
+    [colorCodeButton setAction:@selector(colorSpaceButtonPressed)];
 
     NSView *colorCodeView = [[NSView alloc] init];
     colorCodeView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -143,7 +144,40 @@
   return nil;
 }
 
--(void)updateStringRepresentationOfColor {
-  [colorCodeField setStringValue: [self representationStringOfCurrentColorMode: YES]];
+-(BOOL) hasCorrectColorSpace {
+  return [[[self color] colorSpace] isEqualTo: [self desiredColorSpace]];
 }
+
+-(NSString *) titleForColorSpace:(NSColorSpace *)colorSpace {
+  if([colorSpace isEqual:[NSColorSpace sRGBColorSpace]]){
+    return @"sRGB";
+  } else {
+    return @"Gen.";
+  }
+}
+
+-(NSColorSpace *) desiredColorSpace {
+  if([self colorMode] == OBJC_NSCOLOR_COLOR_MODE){
+    return [NSColorSpace genericRGBColorSpace];
+  } else {
+    return [NSColorSpace sRGBColorSpace];
+  }
+}
+
+-(void)updateStringRepresentationOfColor {
+  [colorCodeButton setTitle: [self titleForColorSpace:[self desiredColorSpace]]];
+
+  if([self hasCorrectColorSpace]) {
+    [colorCodeButton setEnabled:NO];
+  } else {
+    [colorCodeButton setEnabled:YES];
+  }
+
+  [colorCodeField setStringValue: [[[self color] colorSpace] localizedName]] ;
+}
+
+-(void)colorSpaceButtonPressed {
+  [self setColor: [[self color] colorUsingColorSpace:[self desiredColorSpace]]];
+}
+
 @end
