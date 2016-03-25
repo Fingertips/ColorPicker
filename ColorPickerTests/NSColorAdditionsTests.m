@@ -31,4 +31,20 @@
     }
 }
 
+- (void)testReturnsAHSLARepresentation {
+    NSDictionary *expectations = @{
+         @0: @"hsla(164, 100%, 88%, 0)",
+         @0.5: @"hsla(164, 100%, 88%, 0.50)",
+         @1: @"hsla(164, 100%, 88%, 1)"
+    };
+
+    for(NSNumber *alpha in expectations) {
+        NSColor *color = [NSColor colorFromString:@"c0ffee"];
+        NSString *expectation = [expectations objectForKey:alpha];
+
+        XCTAssertEqualObjects(expectation, [[color colorWithAlphaComponent:[alpha floatValue]] toHSLAString:NO]);
+    }
+}
+
+
 @end

@@ -154,9 +154,9 @@
   NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
   
   NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d%%, %d%%, %@" : @"hsla(%d, %d%%, %d%%, %@)"),
-                       (unsigned int)round(360 * [color hueComponent]),
-                       (unsigned int)round(100 * [color saturationComponent]),
-                       (unsigned int)round(100 * [color brightnessComponent]),
+                      (unsigned int)round([color hueComponentForHSL]) % 360,
+                      (unsigned int)round([color saturationComponentForHSL] * 100),
+                      (unsigned int)round([color lightnessComponentForHSL] * 100),
                        [self _componentToString:[color alphaComponent] withValueForOne:@"1" withValueForZero:@"0" withFormat:@"%.2f"]];
   
   return result;
