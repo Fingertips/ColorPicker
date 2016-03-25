@@ -142,41 +142,10 @@
 -(NSString *)toHSLString:(BOOL)shortVersion {
     NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
 
-    float red = [color redComponent];
-    float green = [color greenComponent];
-    float blue = [color blueComponent];
-
-    NSArray *colors = @[[NSNumber numberWithFloat:red], [NSNumber numberWithFloat:green], [NSNumber numberWithFloat:blue]];
-
-    float max = [[colors valueForKeyPath:@"@max.self"] floatValue];
-    float min = [[colors valueForKeyPath:@"@min.self"] floatValue];
-
-    float hue = 0;
-    float saturation = 0;
-    float lightness = (max + min) / 2;
-
-    if(max != min) {
-        float difference = max - min;
-
-        if(lightness > 0.5) {
-            saturation = difference / (2 - max - min);
-        } else {
-            saturation = difference / (max + min);
-        }
-
-        if(max == red){
-            hue = ((60 * (green - blue) / difference) + 360);
-        } else if(max == green){
-            hue = (60 * (blue - red) / difference) + 120;
-        } else if(max == blue){
-            hue = (60 * (red - green) / difference) + 240;
-        }
-    }
-
      NSString *result = [NSString stringWithFormat: (shortVersion ? @"%d, %d%%, %d%%" : @"hsl(%d, %d%%, %d%%)"),
-                         (unsigned int)round(hue) % 360,
-                         (unsigned int)round(saturation * 100),
-                         (unsigned int)round(lightness * 100)
+                         (unsigned int)round([color hueComponentForHSL]) % 360,
+                         (unsigned int)round([color saturationComponentForHSL] * 100),
+                         (unsigned int)round([color lightnessComponentForHSL] * 100)
                          ];
     return result;
 }
@@ -298,6 +267,59 @@
 
     return [NSString stringWithFormat: @"UIColor.colorWithRed(%@ green:%@ blue:%@ alpha:%@)", red, green, blue, alpha];
   }
+}
+
+-(float) hueComponentForHSL{
+    float red = [self redComponent];
+    float green = [self greenComponent];
+    float blue = [self blueComponent];
+
+    float max = [[[self colorComponents] valueForKeyPath:@"@max.self"] floatValue];
+    float min = [[[self colorComponents] valueForKeyPath:@"@min.self"] floatValue];
+
+    if(max != min){
+        float difference = max - min;
+
+        if(max == red){
+            return ((60 * (green - blue) / difference) + 360);
+        } else if(max == green){
+            return (60 * (blue - red) / difference) + 120;
+        } else if(max == blue){
+            return (60 * (red - green) / difference) + 240;
+        }
+    }
+
+    return 0;
+}
+
+-(float) saturationComponentForHSL{
+    float max = [[[self colorComponents] valueForKeyPath:@"@max.self"] floatValue];
+    float min = [[[self colorComponents] valueForKeyPath:@"@min.self"] floatValue];
+
+    float difference = max - min;
+
+    if([self lightnessComponentForHSL] > 0.5) {
+        return difference / (2 - max - min);
+    } else {
+        return difference / (max + min);
+    }
+}
+
+-(float) lightnessComponentForHSL{
+    float max = [[[self colorComponents] valueForKeyPath:@"@max.self"] floatValue];
+    float min = [[[self colorComponents] valueForKeyPath:@"@min.self"] floatValue];
+
+    return (max + min) / 2;
+}
+
+-(NSArray *) colorComponents {
+    NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
+
+    float red = [color redComponent];
+    float green = [color greenComponent];
+    float blue = [color blueComponent];
+
+    return @[[NSNumber numberWithFloat:red], [NSNumber numberWithFloat:green], [NSNumber numberWithFloat:blue]];
 }
 
 @end
