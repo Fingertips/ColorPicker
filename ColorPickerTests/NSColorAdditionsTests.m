@@ -7,7 +7,7 @@
 
 @implementation NSColorAdditionsTests
 
-- (void)testReturnsAHSLRepresentation {
+- (void)testReturnsHSLRepresentation {
     NSDictionary *expectations = @{
         [NSColor colorFromString:@"000000"]: @"hsl(0, 0%, 0%)",
         [NSColor colorFromString:@"808080"]: @"hsl(0, 0%, 50%)",
@@ -31,7 +31,7 @@
     }
 }
 
-- (void)testReturnsAHSLARepresentation {
+- (void)testReturnsHSLARepresentation {
     NSDictionary *expectations = @{
          @0: @"hsla(164, 100%, 88%, 0)",
          @0.5: @"hsla(164, 100%, 88%, 0.50)",
