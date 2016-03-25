@@ -31,6 +31,10 @@
     }
 }
 
+- (void)testReturnsShortHSLRepresentation {
+    XCTAssertEqualObjects(@"164, 100%, 88%", [[NSColor colorFromString:@"#c0ffee"] toHSLString:YES]);
+}
+
 - (void)testReturnsHSLARepresentation {
     NSDictionary *expectations = @{
          @0: @"hsla(164, 100%, 88%, 0)",
@@ -46,5 +50,8 @@
     }
 }
 
+- (void)testReturnsShortHSLARepresentation {
+    XCTAssertEqualObjects(@"164, 100%, 88%, 1", [[NSColor colorFromString:@"#c0ffee"] toHSLAString:YES]);
+}
 
 @end
