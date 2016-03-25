@@ -12,7 +12,7 @@ When any of the “NSColor” formats are selected, the current color is always 
 
 ## Color Conversion
 
-The reproduce a color accurately, its representation should not only consist of its component values (such as “red”, “green”, and “blue” for the RGB [color model](https://en.wikipedia.org/wiki/Color_model)), but should also contain a reference to a specific [color space](https://en.wikipedia.org/wiki/Color_space).
+To reproduce a color accurately, its representation should not only consist of its component values (such as “red”, “green”, and “blue” for the RGB [color model](https://en.wikipedia.org/wiki/Color_model)), but should also contain a reference to a specific [color space](https://en.wikipedia.org/wiki/Color_space).
 
 What makes this somewhat confusing, is that the color space is almost never an explicit value when a color representation is formatted as code. The reason for this is that most platforms define the color space implicitly.
 
