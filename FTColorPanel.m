@@ -49,19 +49,19 @@
     [colorCodeField setSelectable: YES];
     colorCodeField.translatesAutoresizingMaskIntoConstraints = NO;
 
-    colorCodeButton = [[NSButton alloc] init];
-    [colorCodeButton setFont:[NSFont systemFontOfSize: fontSize]];
-    [colorCodeButton setEnabled:YES];
-    [colorCodeButton setBezelStyle:NSRoundRectBezelStyle];
-    colorCodeButton.translatesAutoresizingMaskIntoConstraints = NO;
+    colorSpaceButton = [[NSButton alloc] init];
+    [colorSpaceButton setFont:[NSFont systemFontOfSize: fontSize]];
+    [colorSpaceButton setEnabled:YES];
+    [colorSpaceButton setBezelStyle:NSRoundRectBezelStyle];
+    colorSpaceButton.translatesAutoresizingMaskIntoConstraints = NO;
 
-    [colorCodeButton setAction:@selector(colorSpaceButtonPressed)];
+    [colorSpaceButton setAction:@selector(colorSpaceButtonPressed)];
 
     NSView *colorCodeView = [[NSView alloc] init];
     colorCodeView.translatesAutoresizingMaskIntoConstraints = NO;
 
     [colorCodeView addSubview: colorCodeField];
-    [colorCodeView addSubview: colorCodeButton];
+    [colorCodeView addSubview: colorSpaceButton];
     [[self contentView] addSubview: colorCodeView];
     
     [self.contentView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"|-padding-[field]->=padding-[button]-padding-|"
@@ -69,7 +69,7 @@
                                                                               metrics:@{@"padding": @10}
                                                                                 views:@{
                                                                                         @"field": colorCodeField,
-                                                                                        @"button": colorCodeButton
+                                                                                        @"button": colorSpaceButton
                                                                                       }
                                        ]
      ];
@@ -177,12 +177,12 @@
 }
 
 -(void)updateStringRepresentationOfColor {
-  [colorCodeButton setTitle: [self titleForColorSpace:[self desiredColorSpace]]];
+  [colorSpaceButton setTitle: [self titleForColorSpace:[self desiredColorSpace]]];
   
   if([self hasCorrectColorSpace]) {
-    [colorCodeButton setEnabled:NO];
+    [colorSpaceButton setEnabled:NO];
   } else {
-    [colorCodeButton setEnabled:YES];
+    [colorSpaceButton setEnabled:YES];
   }
 
   [colorCodeField setStringValue: [self representationStringOfCurrentColorMode: YES]];
