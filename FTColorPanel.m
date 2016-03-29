@@ -156,6 +156,10 @@
   }
 }
 
+-(NSString *)toolTipForColorSpace:(NSColorSpace *)colorSpace {
+    return [NSString stringWithFormat:@"Convert to %@", [colorSpace localizedName]];
+}
+
 -(NSColorSpace *) desiredColorSpace {
   switch (_colorMode) {
     case HEX_COLOR_MODE:
@@ -178,6 +182,7 @@
 
 -(void)updateStringRepresentationOfColor {
   [colorSpaceButton setTitle: [self titleForColorSpace:[self desiredColorSpace]]];
+  [colorSpaceButton setToolTip:[self toolTipForColorSpace:[self desiredColorSpace]]];
   
   if([self hasCorrectColorSpace]) {
     [colorSpaceButton setEnabled:NO];
