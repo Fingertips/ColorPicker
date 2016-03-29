@@ -46,11 +46,11 @@
         [NSColor colorFromString:@"00ff00"]: @"hsl(120, 100%, 50%)",
         [NSColor colorFromString:@"0000ff"]: @"hsl(240, 100%, 50%)",
 
-        [NSColor colorFromString:@"#c0ffee"]: @"hsl(164, 100%, 88%)",
-        [NSColor colorFromString:@"#0ff1ce"]: @"hsl(171, 89%, 50%)",
-        [NSColor colorFromString:@"#d00dad"]: @"hsl(311, 88%, 43%)",
-        [NSColor colorFromString:@"#fab1ed"]: @"hsl(311, 88%, 84%)",
-        [NSColor colorFromString:@"#c0bb1e"]: @"hsl(58, 73%, 44%)"
+        [NSColor colorFromString:@"c0ffee"]: @"hsl(164, 100%, 88%)",
+        [NSColor colorFromString:@"0ff1ce"]: @"hsl(171, 89%, 50%)",
+        [NSColor colorFromString:@"d00dad"]: @"hsl(311, 88%, 43%)",
+        [NSColor colorFromString:@"fab1ed"]: @"hsl(311, 88%, 84%)",
+        [NSColor colorFromString:@"c0bb1e"]: @"hsl(58, 73%, 44%)"
     };
 
     for(NSColor *color in expectations) {
@@ -66,9 +66,9 @@
 
 - (void)testReturnsHSLARepresentation {
     NSDictionary *expectations = @{
-         @0: @"hsla(164, 100%, 88%, 0)",
-         @0.5: @"hsla(164, 100%, 88%, 0.50)",
-         @1: @"hsla(164, 100%, 88%, 1)"
+        @0: @"hsla(164, 100%, 88%, 0)",
+        @0.5: @"hsla(164, 100%, 88%, 0.50)",
+        @1: @"hsla(164, 100%, 88%, 1)"
     };
 
     for(NSNumber *alpha in expectations) {
