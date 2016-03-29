@@ -18,7 +18,7 @@ What makes this somewhat confusing, is that the color space is almost never an e
 
 On the web, all colors representations are in the sRGB color space. This is why the HTML and CSS formats are converted to and from “sRGB IEC 61966-2-1” when you copy or paste.
 
-On iOS, all colors and any content is assumed to be in the sRGB color space as well. This is why the “UIColor” formats are converted to and from “sRGB IEC 61966-2-1” when you copy or paste.
+On iOS, everything is assumed to be in the sRGB color space as well. This is why the “UIColor” formats are converted to and from “sRGB IEC 61966-2-1” when you copy or paste.
 
 Mac OS X includes the ColorSync color management API which allows conversion between color models and color spaces. However, the recommended way to represent colors in code is with “colorWithCalibrated” which uses the “Generic RGB” color space. This is why the “NSColor” formats are converted to and from “Generic RGB” when you copy or paste.
 
