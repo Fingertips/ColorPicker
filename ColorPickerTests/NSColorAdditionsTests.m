@@ -6,6 +6,35 @@
 @end
 
 @implementation NSColorAdditionsTests
+- (void)testParsesHexadecimalRepresentations {
+
+    NSDictionary *expectations = @{
+        [NSColor colorFromString:@"000000"]: @[@0,            @0,            @0,            @1],
+        [NSColor colorFromString:@"808080"]: @[@0.5019607843, @0.5019607843, @0.5019607843, @1],
+        [NSColor colorFromString:@"bf4040"]: @[@0.7490196078, @0.2509803922, @0.2509803922, @1],
+        [NSColor colorFromString:@"df9f9f"]: @[@0.8745098039, @0.6235294118, @0.6235294118, @1],
+        [NSColor colorFromString:@"ff8000"]: @[@1,            @0.5019607843, @0,            @1],
+        [NSColor colorFromString:@"00ff00"]: @[@0,            @1,            @0,            @1],
+        [NSColor colorFromString:@"0000ff"]: @[@0,            @0,            @1,            @1],
+
+        [NSColor colorFromString:@"c0ffee"]: @[@0.7529411765, @1,            @0.9333333333, @1],
+        [NSColor colorFromString:@"0ff1ce"]: @[@0.0588235294, @0.9450980392, @0.8078431373, @1],
+        [NSColor colorFromString:@"d00dad"]: @[@0.8156862745, @0.0509803921, @0.6784313725, @1],
+        [NSColor colorFromString:@"fab1ed"]: @[@0.9803921569, @0.6941176471, @0.9294117647, @1],
+        [NSColor colorFromString:@"c0bb1e"]: @[@0.7529411765, @0.7333333333, @0.1176470588, @1]
+    };
+
+    for(NSColor *color in expectations) {
+        NSArray *expectation = [expectations objectForKey:color];
+        CGFloat components[4] = {};
+
+        for (int i=0; i<[expectation count]; i++) {
+            components[i] = [[expectation objectAtIndex:i] floatValue];
+        }
+
+        XCTAssertEqualObjects([NSColor colorWithColorSpace:[NSColorSpace sRGBColorSpace] components:components count:4], color);
+    }
+}
 
 - (void)testReturnsHSLRepresentation {
     NSDictionary *expectations = @{
