@@ -59,13 +59,13 @@ a:active
 
 <h2 id="color_conversion">Color Conversion</h2>
 
-<p>The reproduce a color accurately, its representation should not only consist of its component values (such as “red”, “green”, and “blue” for the RGB <a href="https://en.wikipedia.org/wiki/Color_model">color model</a>), but should also contain a reference to a specific <a href="https://en.wikipedia.org/wiki/Color_space">color space</a>.</p>
+<p>To reproduce a color accurately, its representation should not only consist of its component values (such as “red”, “green”, and “blue” for the RGB <a href="https://en.wikipedia.org/wiki/Color_model">color model</a>), but should also contain a reference to a specific <a href="https://en.wikipedia.org/wiki/Color_space">color space</a>.</p>
 
 <p>What makes this somewhat confusing, is that the color space is almost never an explicit value when a color representation is formatted as code. The reason for this is that most platforms define the color space implicitly.</p>
 
 <p>On the web, all colors representations are in the sRGB color space. This is why the HTML and CSS formats are converted to and from “sRGB IEC 61966-2-1” when you copy or paste.</p>
 
-<p>On iOS, all colors and any content is assumed to be in the sRGB color space as well. This is why the “UIColor” formats are converted to and from “sRGB IEC 61966-2-1” when you copy or paste.</p>
+<p>On iOS, everything is assumed to be in the sRGB color space as well. This is why the “UIColor” formats are converted to and from “sRGB IEC 61966-2-1” when you copy or paste.</p>
 
 <p>Mac OS X includes the ColorSync color management API which allows conversion between color models and color spaces. However, the recommended way to represent colors in code is with “colorWithCalibrated” which uses the “Generic RGB” color space. This is why the “NSColor” formats are converted to and from “Generic RGB” when you copy or paste.</p>
 
