@@ -13,6 +13,8 @@
 -(NSString *)toHexString;
 -(NSString *)toHexStringWithoutHash;
 
+-(NSArray *) RGBColorComponents;
+
 -(NSString *)toRGBString:(BOOL)shortVersion;
 -(NSString *)toRGBAString:(BOOL)shortVersion;
 

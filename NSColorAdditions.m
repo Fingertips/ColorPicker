@@ -274,8 +274,8 @@
     float green = [self greenComponent];
     float blue = [self blueComponent];
 
-    float max = [[[self colorComponents] valueForKeyPath:@"@max.self"] floatValue];
-    float min = [[[self colorComponents] valueForKeyPath:@"@min.self"] floatValue];
+    float max = [[[self RGBColorComponents] valueForKeyPath:@"@max.self"] floatValue];
+    float min = [[[self RGBColorComponents] valueForKeyPath:@"@min.self"] floatValue];
 
     if(max != min){
         float difference = max - min;
@@ -293,8 +293,8 @@
 }
 
 -(float) saturationComponentForHSL{
-    float max = [[[self colorComponents] valueForKeyPath:@"@max.self"] floatValue];
-    float min = [[[self colorComponents] valueForKeyPath:@"@min.self"] floatValue];
+    float max = [[[self RGBColorComponents] valueForKeyPath:@"@max.self"] floatValue];
+    float min = [[[self RGBColorComponents] valueForKeyPath:@"@min.self"] floatValue];
 
     float difference = max - min;
 
@@ -306,13 +306,13 @@
 }
 
 -(float) lightnessComponentForHSL{
-    float max = [[[self colorComponents] valueForKeyPath:@"@max.self"] floatValue];
-    float min = [[[self colorComponents] valueForKeyPath:@"@min.self"] floatValue];
+    float max = [[[self RGBColorComponents] valueForKeyPath:@"@max.self"] floatValue];
+    float min = [[[self RGBColorComponents] valueForKeyPath:@"@min.self"] floatValue];
 
     return (max + min) / 2;
 }
 
--(NSArray *) colorComponents {
+-(NSArray *) RGBColorComponents {
     NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
 
     float red = [color redComponent];
