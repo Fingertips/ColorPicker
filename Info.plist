@@ -8,6 +8,10 @@
 	<array/>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>ColorPicker.help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>ColorPickerHelp</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.fngtps.PersistentColorPicker</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -17,7 +21,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.0</string>
+	<string>2.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -40,9 +44,5 @@
 	<array/>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
-	<key>CFBundleHelpBookName</key>
-	<string>ColorPickerHelp</string>
-	<key>CFBundleHelpBookFolder</key>
-	<string>ColorPicker.help</string>
 </dict>
 </plist>
