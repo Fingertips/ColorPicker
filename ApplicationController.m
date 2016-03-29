@@ -2,6 +2,9 @@
 
 @implementation ApplicationController
 -(void)awakeFromNib {
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NSDisabledDictationMenuItem"];
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NSDisabledCharacterPaletteMenuItem"];
+
   panel = [[FTColorPanel alloc] init];
   [panel setDelegate: self];
   [panel makeKeyAndOrderFront: self];
