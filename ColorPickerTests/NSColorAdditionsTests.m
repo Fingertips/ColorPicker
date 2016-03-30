@@ -36,6 +36,47 @@
     }
 }
 
+- (void)testParsesHSLRepresentations {
+
+  NSDictionary *expectations = @{
+    [NSColor colorFromString:@"hsl(0, 0%, 0)"]:       @"000",
+    [NSColor colorFromString:@"hsl(0, 0%, 50%)"]:     @"808080",
+    [NSColor colorFromString:@"hsl(0, 50%, 50%)"]:    @"bf4040",
+    [NSColor colorFromString:@"hsl(0, 50%, 75%)"]:    @"df9f9f",
+    [NSColor colorFromString:@"hsl(30, 100%, 50%)"]:  @"ff8000",
+    [NSColor colorFromString:@"hsl(120, 100%, 50%)"]: @"0f0",
+    [NSColor colorFromString:@"hsl(240, 100%, 50%)"]: @"00f",
+
+    [NSColor colorFromString:@"hsl(164, 100%, 88%)"]: @"c2ffef",
+    [NSColor colorFromString:@"hsl(171, 89%, 50%)"]:  @"0ef1cf",
+    [NSColor colorFromString:@"hsl(311, 88%, 43%)"]:  @"ce0dab",
+    [NSColor colorFromString:@"hsl(311, 88%, 84%)"]:  @"fab2ed",
+    [NSColor colorFromString:@"hsl(58, 73%, 44%)"]:   @"c2bd1e",
+  };
+
+  NSLog(@"expectations: %@", expectations);
+
+  for(NSColor *color in expectations) {
+    NSArray *expectation = [expectations objectForKey:color];
+
+    XCTAssertEqualObjects(expectation, [color toHexStringWithoutHash]);
+  }
+}
+
+- (void)testParsesHSLARepresentations {
+  NSDictionary *expectations = @{
+    @0: @"hsla(164, 100%, 88%, 0)",
+    @0.5: @"hsla(164, 100%, 88%, 0.50)",
+    @1: @"hsla(164, 100%, 88%, 1)"
+  };
+
+  for(NSNumber *alpha in expectations) {
+    NSString *expectation = [expectations objectForKey:alpha];
+    NSColor *color = [NSColor colorFromString: @"c2ffef"];
+    XCTAssertEqualObjects(expectation, [[color colorWithAlphaComponent:[alpha floatValue]] toHSLAString:NO]);
+  }
+}
+
 - (void)testReturnsHSLRepresentation {
     NSDictionary *expectations = @{
         [NSColor colorFromString:@"000000"]: @"hsl(0, 0%, 0%)",

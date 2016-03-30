@@ -9,24 +9,48 @@
   [skipChars formUnionWithCharacterSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
   [scanner setCharactersToBeSkipped: skipChars];
   
-  if ([scanner scanString:@"hsl(" intoString:nil] || [scanner scanString:@"hsla(" intoString:nil]) {
-    int hue = 0, saturation = 0, brightness = 0;
-    
-    [scanner scanInt: &hue];
-    [scanner scanInt: &saturation];
-    [scanner scanInt: &brightness];
-    [scanner scanFloat: &alpha];
-    
-    return [NSColor colorWithCalibratedHue: (hue / 360.0)
-                                saturation: (saturation / 100.0)
-                                brightness: (brightness / 100.0)
-                                     alpha: alpha];
-  }
-  
   float red = 0, green = 0, blue = 0;
   NSColorSpace *colorSpace = [NSColorSpace sRGBColorSpace];
   
-  if ([scanner scanString:@"rgb(" intoString:nil] || [scanner scanString:@"rgba(" intoString:nil]) {
+  if ([scanner scanString:@"hsl(" intoString:nil] || [scanner scanString:@"hsla(" intoString:nil]) {
+    int hue = 0, saturation = 0, lightness = 0;
+    
+    [scanner scanInt: &hue];
+    [scanner scanInt: &saturation];
+    [scanner scanInt: &lightness];
+    [scanner scanFloat: &alpha];
+
+    if(saturation == 0) {
+        red = lightness / 100.0; green = lightness / 100.0; blue = lightness / 100.0;
+    } else {
+      float floatHue = hue / 360.0;
+      float floatSaturation = saturation / 100.0;
+      float floatLightness = lightness / 100.0;
+
+      float (^hueToRGB)(float, float, float) = ^ (float p, float q, float t) {
+        if(t < 0) t += 1;
+        if(t > 1) t -= 1;
+        if(t < 1/6.0) return p + (q - p) * 6 * t;
+        if(t < 1/2.0) return q;
+        if(t < 2/3.0) return (float)(p + (q - p) * (2/3.0 - t) * 6);
+        return p;
+      };
+
+      float q;
+
+      if(floatLightness < 0.5) {
+        q = floatLightness * (1 + floatSaturation);
+      } else {
+        q = floatLightness + floatSaturation - floatLightness * floatSaturation;
+      }
+
+      float p = 2 * floatLightness - q;
+
+      red = hueToRGB(p, q,	 floatHue + 1/3.0);
+      green = hueToRGB(p, q, floatHue);
+      blue = hueToRGB(p, q, floatHue - 1/3.0);
+    }
+  } else if ([scanner scanString:@"rgb(" intoString:nil] || [scanner scanString:@"rgba(" intoString:nil]) {
     signed int r = 0, g = 0, b = 0;
     
     [scanner scanInt: &r];
