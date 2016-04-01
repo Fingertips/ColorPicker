@@ -146,4 +146,27 @@
   XCTAssertEqualObjects(@"0.752941 1 0.933333 0.75", [color toObjcUIColor:YES]);
 }
 
+- (void)testReturnsSwiftNSColorRepresentation {
+  NSColor *color = [NSColor colorWithCalibratedRed:0.752941 green:1.0 blue:0.933333 alpha:0.75];
+  XCTAssertEqualObjects(@"NSColor(calibratedRed:0.752941, green:1.0, blue:0.933333, alpha:0.75)", [color toSwiftNSColor:NO]);
+}
+
+- (void)testReturnsShortSwiftCNSColorRepresentation {
+  NSColor *color = [NSColor colorWithCalibratedRed:0.752941 green:1.0 blue:0.933333 alpha:0.75];
+  XCTAssertEqualObjects(@"0.752941 1 0.933333 0.75", [color toSwiftNSColor:YES]);
+}
+
+- (void)testReturnsSwiftUIColorRepresentation {
+  CGFloat components[4] = {0.752941, 1.0, 0.933333, 0.75};
+  NSColor *color = [NSColor colorWithColorSpace:[NSColorSpace sRGBColorSpace] components:components count:4];
+  XCTAssertEqualObjects(@"UIColor(red:0.752941, green:1.0, blue:0.933333, alpha:0.75)", [color toSwiftUIColor:NO]);
+}
+
+- (void)testReturnsShortSwiftUIColorRepresentation {
+  CGFloat components[4] = {0.752941, 1.0, 0.933333, 0.75};
+  NSColor *color = [NSColor colorWithColorSpace:[NSColorSpace sRGBColorSpace] components:components count:4];
+  XCTAssertEqualObjects(@"0.752941 1 0.933333 0.75", [color toSwiftUIColor:YES]);
+}
+
+
 @end
