@@ -247,7 +247,7 @@
   NSString *blue  = [self _componentToString: [color blueComponent]];
   NSString *alpha = [self _componentToString: [color alphaComponent] withFormat:@"%.2f"];
 
-  return [NSString stringWithFormat: @"NSColor(calibratedRed: %@ green:%@ blue%@ alpha:%@)", red, green, blue, alpha];
+  return [NSString stringWithFormat: @"NSColor.colorWithCalibratedRed(%@, green:%@, blue:%@, alpha:%@)", red, green, blue, alpha];
 }
 
 -(NSString *)toObjcUIColor:(BOOL)shortVersion {
@@ -285,7 +285,7 @@
 
 -(NSString *)toMotionUIColor:(BOOL)shortVersion {
   if (shortVersion) {
-    return [self toObjcNSColor: YES];
+    return [self toObjcUIColor: YES];
   } else {
     NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
     NSString *red   = [self _componentToString: [color redComponent]];
@@ -293,7 +293,7 @@
     NSString *blue  = [self _componentToString: [color blueComponent]];
     NSString *alpha = [self _componentToString: [color alphaComponent] withFormat:@"%.2f"];
 
-    return [NSString stringWithFormat: @"UIColor.colorWithRed(%@ green:%@ blue:%@ alpha:%@)", red, green, blue, alpha];
+    return [NSString stringWithFormat: @"UIColor.colorWithRed(%@, green:%@, blue:%@, alpha:%@)", red, green, blue, alpha];
   }
 }
 

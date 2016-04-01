@@ -169,4 +169,26 @@
 }
 
 
+- (void)testReturnsMotionNSColorRepresentation {
+  NSColor *color = [NSColor colorWithCalibratedRed:0.752941 green:1.0 blue:0.933333 alpha:0.75];
+  XCTAssertEqualObjects(@"NSColor.colorWithCalibratedRed(0.752941, green:1.0, blue:0.933333, alpha:0.75)", [color toMotionNSColor:NO]);
+}
+
+- (void)testReturnsShortMotionCNSColorRepresentation {
+  NSColor *color = [NSColor colorWithCalibratedRed:0.752941 green:1.0 blue:0.933333 alpha:0.75];
+  XCTAssertEqualObjects(@"0.752941 1 0.933333 0.75", [color toMotionNSColor:YES]);
+}
+
+- (void)testReturnsMotionUIColorRepresentation {
+  CGFloat components[4] = {0.752941, 1.0, 0.933333, 0.75};
+  NSColor *color = [NSColor colorWithColorSpace:[NSColorSpace sRGBColorSpace] components:components count:4];
+  XCTAssertEqualObjects(@"UIColor.colorWithRed(0.752941, green:1.0, blue:0.933333, alpha:0.75)", [color toMotionUIColor:NO]);
+}
+
+- (void)testReturnsShortMotionUIColorRepresentation {
+  CGFloat components[4] = {0.752941, 1.0, 0.933333, 0.75};
+  NSColor *color = [NSColor colorWithColorSpace:[NSColorSpace sRGBColorSpace] components:components count:4];
+  XCTAssertEqualObjects(@"0.752941 1 0.933333 0.75", [color toMotionUIColor:YES]);
+}
+
 @end
