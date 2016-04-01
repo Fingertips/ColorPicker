@@ -124,4 +124,26 @@
     XCTAssertEqualObjects(@"164, 100%, 88%, 1", [[NSColor colorFromString:@"#c0ffee"] toHSLAString:YES]);
 }
 
+- (void)testReturnsObjectiveCNSColorRepresentation {
+    NSColor *color = [NSColor colorWithCalibratedRed:0.752941 green:1.0 blue:0.933333 alpha:0.75];
+    XCTAssertEqualObjects(@"[NSColor colorWithCalibratedRed:0.752941 green:1.0 blue:0.933333 alpha:0.75]", [color toObjcNSColor:NO]);
+}
+
+- (void)testReturnsShortObjectiveCNSColorRepresentation {
+    NSColor *color = [NSColor colorWithCalibratedRed:0.752941 green:1.0 blue:0.933333 alpha:0.75];
+    XCTAssertEqualObjects(@"0.752941 1 0.933333 0.75", [color toObjcNSColor:YES]);
+}
+
+- (void)testReturnsObjectiveCUIColorRepresentation {
+  CGFloat components[4] = {0.752941, 1.0, 0.933333, 0.75};
+  NSColor *color = [NSColor colorWithColorSpace:[NSColorSpace sRGBColorSpace] components:components count:4];
+  XCTAssertEqualObjects(@"[UIColor colorWithRed:0.752941 green:1.0 blue:0.933333 alpha:0.75]", [color toObjcUIColor:NO]);
+}
+
+- (void)testReturnsShortObjectiveCUIColorRepresentation {
+  CGFloat components[4] = {0.752941, 1.0, 0.933333, 0.75};
+  NSColor *color = [NSColor colorWithColorSpace:[NSColorSpace sRGBColorSpace] components:components count:4];
+  XCTAssertEqualObjects(@"0.752941 1 0.933333 0.75", [color toObjcUIColor:YES]);
+}
+
 @end

@@ -251,17 +251,21 @@
 }
 
 -(NSString *)toObjcUIColor:(BOOL)shortVersion {
+  NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
+  NSString *alpha = [self _componentToString: [color alphaComponent] withFormat:@"%.2f"];
 
   if (shortVersion) {
-    return [self toObjcNSColor: YES];
+    return [NSString stringWithFormat: @"%g %g %g %@",
+            [color redComponent],
+            [color greenComponent],
+            [color blueComponent],
+            alpha];
   } else {
-    NSColor *color = [self colorUsingColorSpace: [NSColorSpace sRGBColorSpace]];
-
-    NSString *red   = [self _componentToString: [color redComponent]];
-    NSString *green = [self _componentToString: [color greenComponent]];
-    NSString *blue  = [self _componentToString: [color blueComponent]];
-    NSString *alpha = [self _componentToString: [color alphaComponent] withFormat:@"%.2f"];
-    return [NSString stringWithFormat: @"[UIColor colorWithRed:%@ green:%@ blue:%@ alpha:%@]", red, green, blue, alpha];
+    return [NSString stringWithFormat: @"[UIColor colorWithRed:%@ green:%@ blue:%@ alpha:%@]",
+            [self _componentToString: [color redComponent]],
+            [self _componentToString: [color greenComponent]],
+            [self _componentToString: [color blueComponent]],
+            alpha];
   }
 }
 
